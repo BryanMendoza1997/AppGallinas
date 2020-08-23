@@ -54,15 +54,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/text_rol">
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/txt_rol"
+
+                <com.weiwangcn.betterspinner.library.material.MaterialBetterSpinner
+                    android:id="@+id/android_material_design_spinner"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="text"
-
-                    android:drawableTint="@color/color_icos"
-                    android:drawablePadding="5dp">
-                </com.google.android.material.textfield.TextInputEditText>
+                    android:drawablePadding="6dp">
+                </com.weiwangcn.betterspinner.library.material.MaterialBetterSpinner>
             </com.google.android.material.textfield.TextInputLayout>
             <com.google.android.material.textfield.TextInputLayout
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
