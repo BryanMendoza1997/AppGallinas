@@ -158,11 +158,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="15dp"
-                android:onClick="registrar"
+                android:onClick="valida_correeo"
                 android:text="@string/btn_registrar_usuario"
+                android:textAlignment="center"
                 android:textAppearance="@style/TextAppearance.AppCompat.Display1"
                 android:textColor="@color/colorPrimary"
-                android:textAlignment="center"
                 android:textSize="26dp"
                 app:cornerRadius="350in"></com.google.android.material.button.MaterialButton>
         </LinearLayout>
