@@ -71,7 +71,7 @@ public class RegistraUsuario extends AppCompatActivity implements Asynchtask {
 
     }
 
-    private void valida_correo() {
+    private void valida_correeo() {
         Map<String, String> datos = new HashMap<String, String>();
         datos.put("correo",txt_correo.getText().toString());
         ejec_service="consulta_correo";
