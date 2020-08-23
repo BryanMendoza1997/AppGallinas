@@ -21,4 +21,8 @@ public class MainActivity extends AppCompatActivity {
         Intent in= new Intent(this,Vendedor.class);
         startActivity(in);
     }
+    public void registrar_usuario(View view){
+        Intent in= new Intent(this,RegistraUsuario.class);
+        startActivity(in);
+    }
 }
