@@ -83,7 +83,7 @@ public class IngresarProducto extends Fragment {
         return vista;
     }
     public void  agregardatos(){
-        products.add( new Producto(0.93,"Pareja de Guineas pequeñas tienen mes y medio a 20 la pareja También se vende Guineas adultas, precio 35 la pareja. Tele:0995645141","Viva o muerta",R.drawable.gallina_0,"Venta de gallinas de campo",R.drawable.userm,"7-15 libras"));
+        products.add( new Producto(0.93,"El Plymouth Rock es una raza americana de pollo doméstico. Se vio por primera vez en Massachusetts en el siglo XIX, y durante gran parte de principios del siglo XX fue la raza de pollo más popular en los Estados Unidos. Es una raza de doble propósito, criada tanto por su carne como por sus huevos","Viva o muerta",R.drawable.gallina_0,"Plymouth Rock",R.drawable.userm,"7-15 libras"));
         products.add( new Producto(0.93,"Pareja de Guineas pequeñas tienen mes y medio a 20 la pareja También se vende Guineas adultas, precio 35 la pareja. Tele:0995645141","Viva o muerta",R.drawable.gallina_0,"Venta de gallinas de campo",R.drawable.userm,"7-15 libras"));
         products.add( new Producto(0.93,"Pareja de Guineas pequeñas tienen mes y medio a 20 la pareja También se vende Guineas adultas, precio 35 la pareja. Tele:0995645141","Viva o muerta",R.drawable.gallina_0,"Venta de gallinas de campo",R.drawable.userm,"7-15 libras"));
         products.add( new Producto(0.93,"Pareja de Guineas pequeñas tienen mes y medio a 20 la pareja También se vende Guineas adultas, precio 35 la pareja. Tele:0995645141","Viva o muerta",R.drawable.gallina_0,"Venta de gallinas de campo",R.drawable.userm,"7-15 libras"));
