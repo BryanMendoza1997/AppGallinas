@@ -18,12 +18,17 @@ import com.google.android.material.navigation.NavigationView;
 public class Cliente extends AppCompatActivity {
 
     //prueba
+    String nombre="Anonimo";
+    String id="";
     private DrawerLayout drawerLayout;
     private NavigationView navigationView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cliente);
+        //Id y Nombre del usuario que inicio sesion puedes ocupar estar variables para eso
+        nombre=getIntent().getStringExtra("Idusuario");
+        id =getIntent().getStringExtra("Nombre");
         drawerLayout=(DrawerLayout)findViewById(R.id.drawer_layout);
         navigationView=(NavigationView)findViewById(R.id.nav_view);
         setToolbar();
