@@ -12,6 +12,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.appgallinas.Adaptadores.AdapterGallinas;
 import com.example.appgallinas.Adaptadores.MyAdapter;
 import com.example.appgallinas.Clases.Producto;
 import com.example.appgallinas.R;
@@ -72,12 +73,12 @@ public class IngresarProducto extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View vista=inflater.inflate(R.layout.fragment_inicio, container, false);
-        recyclerView=(RecyclerView) vista.findViewById(R.id.Recyclerview);
+        View vista=inflater.inflate(R.layout.fragment_ingresar_producto, container, false);
+        recyclerView=(RecyclerView) vista.findViewById(R.id.RecyclerviewLstGallinas);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         products=new ArrayList<>();
         agregardatos();
-        MyAdapter adapter=new MyAdapter(products);
+        AdapterGallinas adapter=new AdapterGallinas(products);
         recyclerView.setAdapter(adapter);
         return vista;
 
