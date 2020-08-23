@@ -17,6 +17,7 @@ import com.google.android.material.navigation.NavigationView;
 
 public class Cliente extends AppCompatActivity {
 
+    //prueba
     private DrawerLayout drawerLayout;
     private NavigationView navigationView;
     @Override
