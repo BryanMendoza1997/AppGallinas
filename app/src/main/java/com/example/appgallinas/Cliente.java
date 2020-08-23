@@ -83,7 +83,7 @@ public class Cliente extends AppCompatActivity {
 
             case R.id.action_salir:
                 Intent in = new Intent(this, Login.class);
-                Toast.makeText(this,"Sesión Cerrada",Toast.LENGTH_LONG).show();
+                Toast.makeText(this,"Sesión Cerrada",Toast.LENGTH_SHORT).show();
                 startActivity(in);
                 return true;
         }

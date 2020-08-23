@@ -93,4 +93,9 @@ public class Login extends AppCompatActivity implements Asynchtask {
         Pattern pattern = Patterns.EMAIL_ADDRESS;
         return pattern.matcher(email).matches();
     }
+    public  void registrarse(View view){
+
+        Intent in = new Intent(this, RegistraUsuario.class);
+        startActivity(in);
+    }
 }
