@@ -1,13 +1,73 @@
 package com.example.appgallinas.Clases;
 
-public class Producto {
+import com.example.appgallinas.Vendedor;
+import com.example.appgallinas.WebServices.Asynchtask;
+import com.example.appgallinas.WebServices.WebService;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
+
+public class Producto implements Asynchtask {
     private Double Precio;
     private String descripción;
     private String Estado;
+    private String nombre;
     private int fotogallina;
     private String titulo;
     private int fotoprovedor;
+    private int idProducto;
     private  String peso;
+    private  String raza;
+    private  String foto;
+
+
+    private ArrayList<Producto> products;
+    public Producto(String nombre, int idProducto, String raza, String foto) {
+        this.nombre = nombre;
+        this.idProducto = idProducto;
+        this.raza = raza;
+        this.foto = foto;
+    }
+
+    public Producto() {
+
+    }
+
+    public String getRaza() {
+        return raza;
+    }
+
+    public void setRaza(String raza) {
+        this.raza = raza;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public int getIdProducto() {
+        return idProducto;
+    }
+
+    public void setIdProducto(int idProducto) {
+        this.idProducto = idProducto;
+    }
+
+    public String getFoto() {
+        return foto;
+    }
+
+    public void setFoto(String foto) {
+        this.foto = foto;
+    }
 
     public String getPeso() {
         return peso;
@@ -16,6 +76,7 @@ public class Producto {
     public void setPeso(String peso) {
         this.peso = peso;
     }
+
 
 
 
@@ -78,4 +139,28 @@ public class Producto {
     }
 
 
+    public ArrayList<Producto> consultarGallinas() {
+        products=new ArrayList<>();
+        Map<String, String> datos = new HashMap<String, String>();
+        datos.put("correo", "");
+        datos.put("clave", "");
+        /*WebService ws = new WebService("https://fotos-quito-liliana-zambrano.000webhostapp.com/listarProducto.php",
+                datos, this,this);
+        ws.execute("POST");
+         */
+        return  products;
+
+    }
+
+    @Override
+    public void processFinish(String result) throws JSONException {
+        JSONObject obj = new JSONObject(result);
+        String nombre, fotoReferencia, Raza;
+        int idproducto;
+        nombre=obj.getString("nombre");
+        fotoReferencia=obj.getString("fotoReferencia");
+        Raza=obj.getString("Raza");
+        idproducto=obj.getInt("idproducto");
+        products.add( new Producto(nombre,idproducto,Raza,fotoReferencia));
+    }
 }

@@ -3,12 +3,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    tools:context=".fragments.IngresarOferta">
 
     <!-- TODO: Update blank fragment layout -->
-
-
-
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"

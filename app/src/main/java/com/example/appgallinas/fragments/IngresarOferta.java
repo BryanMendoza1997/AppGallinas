@@ -1,39 +1,27 @@
 package com.example.appgallinas.fragments;
 
 import android.app.ProgressDialog;
-import android.content.Context;
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-
 import com.example.appgallinas.Adaptadores.AdapterGallinas;
-import com.example.appgallinas.Adaptadores.MyAdapter;
 import com.example.appgallinas.Clases.Producto;
-import com.example.appgallinas.Login;
 import com.example.appgallinas.R;
-import com.example.appgallinas.Vendedor;
-import com.example.appgallinas.WebServices.Asynchtask;
-import com.example.appgallinas.WebServices.WebService;
-
-import org.json.JSONException;
-import org.json.JSONObject;
 
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link IngresarProducto#newInstance} factory method to
+ * Use the {@link IngresarOferta#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class IngresarProducto extends Fragment  {
+public class IngresarOferta extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -45,7 +33,7 @@ public class IngresarProducto extends Fragment  {
     private String mParam1;
     private String mParam2;
 
-    public IngresarProducto() {
+    public IngresarOferta() {
         // Required empty public constructor
     }
 
@@ -58,8 +46,8 @@ public class IngresarProducto extends Fragment  {
      * @return A new instance of fragment IngresarProducto.
      */
     // TODO: Rename and change types and number of parameters
-    public static IngresarProducto newInstance(String param1, String param2) {
-        IngresarProducto fragment = new IngresarProducto();
+    public static IngresarOferta newInstance(String param1, String param2) {
+        IngresarOferta fragment = new IngresarOferta();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -75,34 +63,12 @@ public class IngresarProducto extends Fragment  {
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
     }
-
-
     ArrayList<Producto> products;
-    Producto p= new Producto();
     RecyclerView recyclerView;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View vista=inflater.inflate(R.layout.fragment_ingresar_producto, container, false);
-        recyclerView=(RecyclerView) vista.findViewById(R.id.RecyclerviewLstGallinas);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        products=new ArrayList<>();
-        p.consultarGallinas();
-        AdapterGallinas adapter=new AdapterGallinas(products);
-        recyclerView.setAdapter(adapter);
-        return vista;
-    }
-    public void  agregardatos(){
-
-    }
-
-
-    class CargarDatos implements Runnable {
-        @Override
-        public void run() {
-            progreso.setMessage("Consultando del ws...");
-            progreso.show();
-        }
+        return inflater.inflate(R.layout.fragment_blank, container, false);
     }
 }

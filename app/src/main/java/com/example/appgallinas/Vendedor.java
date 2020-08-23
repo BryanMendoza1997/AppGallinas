@@ -11,7 +11,9 @@ import androidx.fragment.app.Fragment;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 
+import com.example.appgallinas.fragments.IngresarOferta;
 import com.example.appgallinas.fragments.IngresarProducto;
 import com.example.appgallinas.fragments.Inicio;
 import com.google.android.material.navigation.NavigationView;
@@ -55,6 +57,16 @@ public class Vendedor extends AppCompatActivity {
             }
         });
     }
+
+    public void CrearOferta(View view)
+    {
+        Fragment fragment=null;
+        fragment= new IngresarOferta();
+        cambiarfradmento(fragment,null);
+        drawerLayout.closeDrawer(GravityCompat.START);
+
+    }
+
     public void cambiarfradmento(Fragment fragment,MenuItem item){
         getSupportFragmentManager().beginTransaction().replace(R.id.content_frame,fragment).commit();
         item.setChecked(true);
