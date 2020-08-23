@@ -10,5 +10,13 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Hola bienvenido al fragmento de Ingresar Productos" />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Lista de productos dispoibles para registrarmen sus ofertas" />
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/RecyclerviewLstGallinas"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
 
 </FrameLayout>
