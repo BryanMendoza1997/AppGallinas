@@ -33,9 +33,6 @@ public class AdapterGallinas extends RecyclerView.Adapter<AdapterGallinas.ViewHo
         holder.titulo.setText(names.get(position).getTitulo());
         holder.descripcion.setText(names.get(position).getDescripción());
         holder.fotoproducto.setImageResource(names.get(position).getFotogallina());
-        holder.fotoproveedor.setImageResource(names.get(position).getFotoprovedor());
-        holder.peso.setText(names.get(position).getPeso());
-        holder.precio.setText( String.valueOf(names.get(position).getPrecio()));
     }
 
     @Override
@@ -46,9 +43,6 @@ public class AdapterGallinas extends RecyclerView.Adapter<AdapterGallinas.ViewHo
         TextView titulo;
         TextView descripcion;
         ImageView fotoproducto;
-        ImageView fotoproveedor;
-        TextView precio;
-        TextView peso;
         TextView estado;
 
         public ViewHolder(@NonNull View itemView) {

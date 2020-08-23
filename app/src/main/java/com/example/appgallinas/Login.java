@@ -84,11 +84,7 @@ public class Login extends AppCompatActivity implements Asynchtask {
           }
         }
         else {
-          //Toast.makeText(this,"Credenciales incorrectas",Toast.LENGTH_LONG).show();
-             Intent in = new Intent(this, Vendedor.class);
-             //in.putExtra("Idusuario",lista.get(0));
-             //in.putExtra("Nombre",lista.get(1));
-             startActivity(in);
+          Toast.makeText(this,"Credenciales incorrectas",Toast.LENGTH_LONG).show();
         }
 
 

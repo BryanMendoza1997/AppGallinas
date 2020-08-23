@@ -42,7 +42,7 @@ public class Vendedor extends AppCompatActivity {
                 switch (menuItem.getItemId())
                 {
                     case R.id.menu_agregarproducto:
-                        //fragment= new IngresarProducto();
+                        fragment= new IngresarProducto();
                         Transaccion=true;
                         break;
                 }
