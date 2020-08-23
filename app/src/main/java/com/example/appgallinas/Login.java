@@ -7,13 +7,11 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.appgallinas.WebServices.Asynchtask;
 import com.example.appgallinas.WebServices.WebService;
 
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -62,10 +60,14 @@ public class Login extends AppCompatActivity implements Asynchtask {
            if (lista.get(2).toString().trim().equals("Cliente")) {
 
           Intent in = new Intent(this, Cliente.class);
+          in.putExtra("Idusuario",lista.get(0));
+          in.putExtra("Nombre",lista.get(1));
           startActivity(in);
 
         } else {
             Intent in = new Intent(this, Vendedor.class);
+            in.putExtra("Idusuario",lista.get(0));
+            in.putExtra("Nombre",lista.get(1));
            startActivity(in);
           }
         }
