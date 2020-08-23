@@ -43,7 +43,7 @@
         android:layout_below="@+id/txtcontrasenia"
         android:layout_alignParentStart="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginStart="123dp"
+        android:layout_marginStart="115dp"
         android:layout_marginTop="43dp"
         android:background="@drawable/borde_boton_inicio"
         android:onClick="iniciar"
@@ -66,8 +66,8 @@
         android:layout_below="@+id/button3"
         android:layout_alignParentStart="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginStart="157dp"
-        android:layout_marginTop="29dp"
+        android:layout_marginStart="148dp"
+        android:layout_marginTop="30dp"
         android:text="Registrarse"
         android:textColor="@color/colorPrimaryDark"
         android:textSize="18sp" />
@@ -78,8 +78,8 @@
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginStart="1dp"
-        android:layout_marginBottom="22dp"
+        android:layout_marginStart="2dp"
+        android:layout_marginBottom="14dp"
         android:text="Olvido su contraseña presione" />
 
     <TextView
@@ -88,8 +88,8 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginStart="3dp"
-        android:layout_marginBottom="22dp"
+        android:layout_marginStart="1dp"
+        android:layout_marginBottom="14dp"
         android:layout_toEndOf="@+id/textView6"
         android:text="aquí"
         android:textColor="@color/colorPrimaryDark" />
