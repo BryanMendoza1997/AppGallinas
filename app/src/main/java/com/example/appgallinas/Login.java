@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Patterns;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -19,6 +20,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.regex.Pattern;
 
 public class Login extends AppCompatActivity implements Asynchtask {
 
@@ -33,15 +35,25 @@ public class Login extends AppCompatActivity implements Asynchtask {
         contrasenia=(EditText)findViewById(R.id.txtcontrasenia);
     }
     public void iniciar(View view){
-        progreso=new ProgressDialog(this);
-        progreso.setMessage("Verificando...");
-        progreso.show();
-        Map<String, String> datos = new HashMap<String, String>();
-        datos.put("correo",usuario.getText().toString().trim());
-        datos.put("clave",contrasenia.getText().toString().trim());
-        WebService ws= new WebService("https://fotos-quito-liliana-zambrano.000webhostapp.com/login.php",
-                datos, Login.this, Login.this);
-        ws.execute("POST");
+
+        if(usuario.getText().toString().trim().length()>0 && contrasenia.getText().toString().trim().length()>0) {
+            if (validarEmail(usuario.getText().toString().trim())) {
+                progreso = new ProgressDialog(this);
+                progreso.setMessage("Verificando...");
+                progreso.show();
+                Map<String, String> datos = new HashMap<String, String>();
+                datos.put("correo", usuario.getText().toString().trim());
+                datos.put("clave", contrasenia.getText().toString().trim());
+                WebService ws = new WebService("https://fotos-quito-liliana-zambrano.000webhostapp.com/login.php",
+                        datos, Login.this, Login.this);
+                ws.execute("POST");
+            } else {
+                Toast.makeText(this, "Correo Incorrecto", Toast.LENGTH_SHORT).show();
+            }
+        }else {
+            Toast.makeText(this, "Por favor llene todos los campos...", Toast.LENGTH_SHORT).show();
+        }
+
     }
 
     @Override
@@ -76,8 +88,9 @@ public class Login extends AppCompatActivity implements Asynchtask {
         }
 
 
-
-
-
+    }
+    private boolean validarEmail(String email) {
+        Pattern pattern = Patterns.EMAIL_ADDRESS;
+        return pattern.matcher(email).matches();
     }
 }

@@ -8,9 +8,12 @@ import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Toast;
 
 import com.example.appgallinas.fragments.Inicio;
 import com.google.android.material.navigation.NavigationView;
@@ -22,6 +25,7 @@ public class Cliente extends AppCompatActivity {
     String id="";
     private DrawerLayout drawerLayout;
     private NavigationView navigationView;
+    private MenuItem iten;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -75,6 +79,12 @@ public class Cliente extends AppCompatActivity {
             case android.R.id.home:
                 //abrir el menu lateral
                 drawerLayout.openDrawer(GravityCompat.START);
+                return true;
+
+            case R.id.action_salir:
+                Intent in = new Intent(this, Login.class);
+                Toast.makeText(this,"Sesión Cerrada",Toast.LENGTH_LONG).show();
+                startActivity(in);
                 return true;
         }
         return super.onOptionsItemSelected(item);

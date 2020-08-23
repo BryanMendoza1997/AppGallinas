@@ -9,7 +9,7 @@
       app:showAsAction="always"
       app:actionViewClass="androidx.appcompat.widget.SearchView"/>
   <item
-      android:id="@+id/action_agregar"
+      android:id="@+id/action_salir"
       android:title="Salir"
       android:icon="@drawable/ic_salir"
       android:orderInCategory="100"
