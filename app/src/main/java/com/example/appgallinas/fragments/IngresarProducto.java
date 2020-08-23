@@ -81,7 +81,6 @@ public class IngresarProducto extends Fragment {
         AdapterGallinas adapter=new AdapterGallinas(products);
         recyclerView.setAdapter(adapter);
         return vista;
-
     }
     public void  agregardatos(){
         products.add( new Producto(0.93,"Pareja de Guineas pequeñas tienen mes y medio a 20 la pareja También se vende Guineas adultas, precio 35 la pareja. Tele:0995645141","Viva o muerta",R.drawable.gallina_0,"Venta de gallinas de campo",R.drawable.userm,"7-15 libras"));
