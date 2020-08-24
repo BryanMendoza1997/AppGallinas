@@ -50,7 +50,7 @@ public class RegistraUsuario extends AppCompatActivity implements Asynchtask {
     }
 
     public void registrar(){
-        //valida_correeo();
+        //valida_correeov();
         try {
             if(!existe&&existe!=null) {
                 if (txt_clave.getText().toString().equals(txt_verifica_clave.getText().toString())) {
