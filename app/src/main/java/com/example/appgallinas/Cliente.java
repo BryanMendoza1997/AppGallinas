@@ -12,7 +12,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.Toast;
 
 import com.example.appgallinas.fragments.Inicio;
@@ -82,6 +81,7 @@ public class Cliente extends AppCompatActivity {
                 return true;
 
             case R.id.action_salir:
+                //Salir de la aplicación.
                 Intent in = new Intent(this, Login.class);
                 Toast.makeText(this,"Sesión Cerrada",Toast.LENGTH_SHORT).show();
                 startActivity(in);

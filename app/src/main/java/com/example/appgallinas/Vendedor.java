@@ -8,10 +8,12 @@ import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Toast;
 
 import com.example.appgallinas.fragments.IngresarOferta;
 import com.example.appgallinas.fragments.IngresarProducto;
@@ -85,8 +87,14 @@ public class Vendedor extends AppCompatActivity {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()){
             case android.R.id.home:
-                //abrir el menu lateral
+                // Abrir el menu lateral
                 drawerLayout.openDrawer(GravityCompat.START);
+                return true;
+            case R.id.action_salir:
+                // Cerrar sesión
+                Intent in = new Intent(this, Login.class);
+                Toast.makeText(this,"Sesión Cerrada",Toast.LENGTH_SHORT).show();
+                startActivity(in);
                 return true;
         }
         return super.onOptionsItemSelected(item);
