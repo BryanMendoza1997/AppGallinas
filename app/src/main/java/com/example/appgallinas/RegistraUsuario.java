@@ -1,5 +1,6 @@
 package com.example.appgallinas;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -25,6 +26,7 @@ public class RegistraUsuario extends AppCompatActivity implements Asynchtask {
     private Boolean existe=null;
     private String[] tiposIncidencias={"Cliente","Vendedor"};
     private MaterialBetterSpinner tipo_usuario;
+    private ProgressDialog dialog;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -62,13 +64,16 @@ public class RegistraUsuario extends AppCompatActivity implements Asynchtask {
                     datos.put("clave", txt_clave.getText().toString());
                     datos.put("ROL", tipo_usuario.getText().toString());
                     ejec_service = "inserta_usuario";
+
                     WebService ws = new WebService("https://fotos-quito-liliana-zambrano.000webhostapp.com/insertarUsuario.php",
                             datos, this, this);
                     ws.execute("POST");
                 } else {
+                    dialog.hide();
                     Toast.makeText(this, "Las claves deben ser iguales", Toast.LENGTH_LONG).show();
                 }
             }else{
+                dialog.hide();
                 Toast.makeText(this, "Ya existe una cuenta con el correo "+txt_correo.getText().toString(), Toast.LENGTH_LONG).show();
             }
         }catch (Exception e){}
@@ -80,6 +85,8 @@ public class RegistraUsuario extends AppCompatActivity implements Asynchtask {
         Map<String, String> datos = new HashMap<String, String>();
         datos.put("correo",txt_correo.getText().toString());
         ejec_service="consulta_correo";
+        dialog = new ProgressDialog(this);
+        dialog.setMessage("Registrando..."); dialog.show();
         WebService ws= new WebService("https://fotos-quito-liliana-zambrano.000webhostapp.com/validarcorreo.php",
                 datos, this, this);
         ws.execute("POST");
@@ -92,6 +99,7 @@ public class RegistraUsuario extends AppCompatActivity implements Asynchtask {
         if(ejec_service.equals("inserta_usuario")){
             result = result.replace("\r\n","");
             if(result.equals("datos_guardados")) {
+                dialog.hide();
                 Toast.makeText(this, "Registrado correctamente", Toast.LENGTH_LONG).show();
                 activity_correspondiente();
             }
@@ -102,8 +110,9 @@ public class RegistraUsuario extends AppCompatActivity implements Asynchtask {
                 existe=true;
                 registrar();
             }else {
-                registrar();
                 existe = false;
+                registrar();
+
             }
         }
     }
