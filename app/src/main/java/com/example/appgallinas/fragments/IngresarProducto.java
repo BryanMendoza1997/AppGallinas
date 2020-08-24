@@ -109,9 +109,11 @@ public class IngresarProducto extends Fragment  {
         return vista;
     }
     public  void  agregardatos(){
-        products.add( new Producto(0.93,"Pareja de Guineas pequeñas tienen mes y medio a 20 la pareja También se vende Guineas adultas, precio 35 la pareja. Tele:0995645141","Viva o muerta",R.drawable.gallina_0,"Venta de gallinas de campo",R.drawable.userm,"7-15 libras"));
-        products.add( new Producto(0.93,"Pareja de Guineas pequeñas tienen mes y medio a 20 la pareja También se vende Guineas adultas, precio 35 la pareja. Tele:0995645141","Viva o muerta",R.drawable.gallina_0,"Venta de gallinas de campo",R.drawable.userm,"7-15 libras"));
-        products.add( new Producto(0.93,"Pareja de Guineas pequeñas tienen mes y medio a 20 la pareja También se vende Guineas adultas, precio 35 la pareja. Tele:0995645141","Viva o muerta",R.drawable.gallina_0,"Venta de gallinas de campo",R.drawable.userm,"7-15 libras"));
-        products.add( new Producto(0.93,"Pareja de Guineas pequeñas tienen mes y medio a 20 la pareja También se vende Guineas adultas, precio 35 la pareja. Tele:0995645141","Viva o muerta",R.drawable.gallina_0,"Venta de gallinas de campo",R.drawable.userm,"7-15 libras"));
+        products.add( new Producto(0.93,"La gallina Brahma enano fue obtenida en Reino Unido y Alemania. Tiene cuerpo carnoso y voluminoso, pecho ancho y abdomen bien desarrollado. Temperamento dulce.","Viva o muerta",R.drawable.brahmaenana,"Gallina Brahma Enana",R.drawable.userm,"7-15 libras"));
+        products.add( new Producto(0.93,"Estas gallinas no son ponedoras, pero incuban naturalmente sus huevos y cuidan muy bien de sus pollitos. Pero también sirven para cuidar los polluelos de otras aves.","Viva o muerta",R.drawable.gallinaalsaciana,"Gallina Alsaciana",R.drawable.userm,"7-15 libras"));
+        products.add( new Producto(0.93,"Esta raza es meramente ornamental, por lo que está continuamente presente en las exhibiciones de aves","Viva o muerta",R.drawable.gallinapolaca,"Gallina Polaca",R.drawable.userm,"7-15 libras"));
+        products.add( new Producto(0.93,"La raza también se denomina Livorno America debido a su posterior selección en Estados Unidos como gallina ponedora.","Viva o muerta",R.drawable.gallinaplymouth,"Gallina Plymouth",R.drawable.userm,"7-15 libras"));
+        products.add( new Producto(0.93,"Su origen y la anilla que deben llevar en la pata. Son muy apreciadas debido al sabor de su carne. Además ponen huevos blancos de 60 g.","Viva o muerta",R.drawable.gallinapiroca,"Gallina Piroca",R.drawable.userm,"7-15 libras"));
+
     }
 }
