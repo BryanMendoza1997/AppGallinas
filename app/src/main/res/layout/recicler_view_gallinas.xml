@@ -45,9 +45,11 @@
                 android:id="@+id/txtdescripcion1"
                 android:layout_width="211dp"
                 android:layout_height="109dp"
+                android:layout_above="@+id/btnañadir1"
                 android:layout_below="@+id/txttitulo1"
                 android:layout_marginStart="10dp"
                 android:layout_marginTop="44dp"
+                android:layout_marginBottom="31dp"
                 android:layout_toEndOf="@+id/imageproducto1"
                 android:text="Vendo gallo y gallina Enanas muy buena línea, y muy enanos. La gallina esta poniendo muy lindas aves negociables O CAMBIO POR GALLITOS FINOS O GALLINITAS"
                 android:textColor="#201E1E" />
