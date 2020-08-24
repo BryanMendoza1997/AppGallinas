@@ -28,6 +28,7 @@
                 android:layout_toEndOf="@+id/imagenperfil"
                 android:text="Gallina Ponedora Colorada"
                 android:textColor="#100F0F"
+                android:textSize="18sp"
                 android:textStyle="bold" />
 
             <ImageView
@@ -74,7 +75,8 @@
                 android:layout_alignParentEnd="true"
                 android:layout_marginTop="12dp"
                 android:layout_marginEnd="14dp"
-                android:text="Disponible" />
+                android:text="Disponible"
+                android:textColor="#6DC10C" />
 
             <TextView
                 android:id="@+id/textView8"
@@ -86,7 +88,8 @@
                 android:layout_toEndOf="@+id/imageproducto1"
                 android:text="Descripción:"
                 android:textAlignment="textStart"
-                android:textColor="#0C0C0C" />
+                android:textColor="#F60202"
+                android:textStyle="bold" />
 
 
         </RelativeLayout>
