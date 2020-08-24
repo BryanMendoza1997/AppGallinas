@@ -1,5 +1,6 @@
 package com.example.appgallinas;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -22,8 +23,8 @@ public class RegistraUsuario extends AppCompatActivity implements Asynchtask {
     private TextInputEditText txt_nombre, txt_apellido, txt_correo, txt_celular, txt_ciudad, txt_direccion, txt_clave, txt_verifica_clave, txt_rol;
     private String ejec_service="";
     private Boolean existe=null;
-    private String[] tiposIncidencias={"Cliente","Comerciante"};
-    private MaterialBetterSpinner materialDesignSpinner;
+    private String[] tiposIncidencias={"Cliente","Vendedor"};
+    private MaterialBetterSpinner tipo_usuario;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,9 +42,9 @@ public class RegistraUsuario extends AppCompatActivity implements Asynchtask {
 
         ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this,
                 android.R.layout.simple_dropdown_item_1line, tiposIncidencias);
-        materialDesignSpinner = (MaterialBetterSpinner)
+        tipo_usuario = (MaterialBetterSpinner)
                 findViewById(R.id.android_material_design_spinner);
-        materialDesignSpinner.setAdapter(arrayAdapter);
+        tipo_usuario.setAdapter(arrayAdapter);
     }
 
     public void registrar(){
@@ -59,7 +60,7 @@ public class RegistraUsuario extends AppCompatActivity implements Asynchtask {
                     datos.put("ciudad", txt_ciudad.getText().toString());
                     datos.put("direccion", txt_direccion.getText().toString());
                     datos.put("clave", txt_clave.getText().toString());
-                    datos.put("ROL", materialDesignSpinner.getText().toString());
+                    datos.put("ROL", tipo_usuario.getText().toString());
                     ejec_service = "inserta_usuario";
                     WebService ws = new WebService("https://fotos-quito-liliana-zambrano.000webhostapp.com/insertarUsuario.php",
                             datos, this, this);
@@ -90,17 +91,27 @@ public class RegistraUsuario extends AppCompatActivity implements Asynchtask {
 
         if(ejec_service.equals("inserta_usuario")){
             result = result.replace("\r\n","");
-            if(result.equals("datos_guardados"))
+            if(result.equals("datos_guardados")) {
                 Toast.makeText(this, "Registrado correctamente", Toast.LENGTH_LONG).show();
+                activity_correspondiente();
+            }
             else
                 Toast.makeText(this, "Error al registrar "+result, Toast.LENGTH_LONG).show();
         }else if(ejec_service.equals("consulta_correo")){
             if(result.equals("1")){
                 existe=true;
                 registrar();
-            }else
+            }else {
                 registrar();
-                existe=false;
+                existe = false;
+            }
         }
+    }
+
+    private void activity_correspondiente() {
+        if(tipo_usuario.getText().toString().equals("Cliente")) {
+            startActivity(new Intent(this, Cliente.class));
+        }else
+            startActivity(new Intent(this, Vendedor.class));
     }
 }
