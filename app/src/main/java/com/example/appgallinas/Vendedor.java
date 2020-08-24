@@ -60,15 +60,6 @@ public class Vendedor extends AppCompatActivity {
         });
     }
 
-    public void CrearOferta(View view)
-    {
-        Fragment fragment=null;
-        fragment= new IngresarOferta();
-        cambiarfradmento(fragment,null);
-        drawerLayout.closeDrawer(GravityCompat.START);
-
-    }
-
     public void cambiarfradmento(Fragment fragment,MenuItem item){
         getSupportFragmentManager().beginTransaction().replace(R.id.content_frame,fragment).commit();
         item.setChecked(true);

@@ -5,6 +5,8 @@ import android.content.Context;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -80,6 +82,7 @@ public class IngresarProducto extends Fragment  {
     ArrayList<Producto> products;
     Producto p= new Producto();
     RecyclerView recyclerView;
+    Bundle args = new Bundle();
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -88,21 +91,27 @@ public class IngresarProducto extends Fragment  {
         recyclerView=(RecyclerView) vista.findViewById(R.id.RecyclerviewLstGallinas);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         products=new ArrayList<>();
-        p.consultarGallinas();
-        AdapterGallinas adapter=new AdapterGallinas(products);
+        agregardatos();
+        AdapterGallinas adapter=new AdapterGallinas(products, new AdapterGallinas.OnItemClickListener() {
+            @Override
+            public void onItemClick(String name, int position) {
+                Fragment seguir= new IngresarOferta();
+                args.putString("Titulo", name);
+                seguir.setArguments(args);
+                FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                fragmentTransaction.replace(R.id.content_frame, seguir);
+                fragmentTransaction.addToBackStack(null);
+                fragmentTransaction.commit();
+            }
+        });
         recyclerView.setAdapter(adapter);
         return vista;
     }
-    public void  agregardatos(){
-
-    }
-
-
-    class CargarDatos implements Runnable {
-        @Override
-        public void run() {
-            progreso.setMessage("Consultando del ws...");
-            progreso.show();
-        }
+    public  void  agregardatos(){
+        products.add( new Producto(0.93,"Pareja de Guineas pequeñas tienen mes y medio a 20 la pareja También se vende Guineas adultas, precio 35 la pareja. Tele:0995645141","Viva o muerta",R.drawable.gallina_0,"Venta de gallinas de campo",R.drawable.userm,"7-15 libras"));
+        products.add( new Producto(0.93,"Pareja de Guineas pequeñas tienen mes y medio a 20 la pareja También se vende Guineas adultas, precio 35 la pareja. Tele:0995645141","Viva o muerta",R.drawable.gallina_0,"Venta de gallinas de campo",R.drawable.userm,"7-15 libras"));
+        products.add( new Producto(0.93,"Pareja de Guineas pequeñas tienen mes y medio a 20 la pareja También se vende Guineas adultas, precio 35 la pareja. Tele:0995645141","Viva o muerta",R.drawable.gallina_0,"Venta de gallinas de campo",R.drawable.userm,"7-15 libras"));
+        products.add( new Producto(0.93,"Pareja de Guineas pequeñas tienen mes y medio a 20 la pareja También se vende Guineas adultas, precio 35 la pareja. Tele:0995645141","Viva o muerta",R.drawable.gallina_0,"Venta de gallinas de campo",R.drawable.userm,"7-15 libras"));
     }
 }

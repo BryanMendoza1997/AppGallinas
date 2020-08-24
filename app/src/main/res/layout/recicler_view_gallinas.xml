@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="300dp"
+    android:layout_height="270dp"
     android:background="#E2E2E2">
 
     <androidx.cardview.widget.CardView
@@ -16,63 +16,75 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
+
+
             <TextView
-                android:id="@+id/txttitulo"
+                android:id="@+id/txttitulo1"
                 android:layout_width="264dp"
                 android:layout_height="wrap_content"
                 android:layout_alignParentTop="true"
                 android:layout_marginStart="20dp"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="16dp"
                 android:layout_toEndOf="@+id/imagenperfil"
                 android:text="Gallina Ponedora Colorada"
                 android:textColor="#100F0F"
                 android:textStyle="bold" />
 
             <ImageView
-                android:id="@+id/imageproducto"
+                android:id="@+id/imageproducto1"
                 android:layout_width="160dp"
                 android:layout_height="132dp"
-                android:layout_below="@+id/txttitulo"
+                android:layout_below="@+id/txttitulo1"
                 android:layout_alignParentStart="true"
-                android:layout_marginStart="5dp"
-                android:layout_marginTop="18dp"
+                android:layout_marginStart="19dp"
+                android:layout_marginTop="15dp"
                 android:scaleType="fitXY"
                 app:srcCompat="@drawable/gallina_0" />
 
-
             <TextView
-                android:id="@+id/txtdescripcion"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/imageproducto"
-                android:layout_alignParentStart="true"
-                android:layout_marginStart="7dp"
-                android:layout_marginTop="11dp"
+                android:id="@+id/txtdescripcion1"
+                android:layout_width="211dp"
+                android:layout_height="109dp"
+                android:layout_below="@+id/txttitulo1"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="44dp"
+                android:layout_toEndOf="@+id/imageproducto1"
                 android:text="Vendo gallo y gallina Enanas muy buena línea, y muy enanos. La gallina esta poniendo muy lindas aves negociables O CAMBIO POR GALLITOS FINOS O GALLINITAS"
                 android:textColor="#201E1E" />
 
             <Button
-                android:id="@+id/btnañadir"
+                android:id="@+id/btnañadir1"
                 android:layout_width="wrap_content"
                 android:layout_height="36dp"
-                android:layout_below="@+id/txtdescripcion"
                 android:layout_alignParentEnd="true"
-                android:layout_marginTop="2dp"
+                android:layout_alignParentBottom="true"
                 android:layout_marginEnd="17dp"
+                android:layout_marginBottom="12dp"
                 android:background="@android:color/holo_blue_light"
                 android:text="Crear oferta"
                 android:textColor="#ECE8E8" />
+
             <TextView
-                android:id="@+id/txtEstado"
+                android:id="@+id/txtEstado1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/txtciudad"
+                android:layout_alignParentTop="true"
                 android:layout_alignParentEnd="true"
-                android:layout_marginStart="7dp"
-                android:layout_marginTop="15dp"
-                android:layout_marginEnd="20dp"
-                android:layout_toEndOf="@+id/textopeso"
+                android:layout_marginTop="12dp"
+                android:layout_marginEnd="14dp"
                 android:text="Disponible" />
+
+            <TextView
+                android:id="@+id/textView8"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/txttitulo1"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="18dp"
+                android:layout_toEndOf="@+id/imageproducto1"
+                android:text="Descripción:"
+                android:textAlignment="textStart"
+                android:textColor="#0C0C0C" />
 
 
         </RelativeLayout>

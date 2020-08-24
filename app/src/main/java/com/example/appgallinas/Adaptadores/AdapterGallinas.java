@@ -3,6 +3,7 @@ package com.example.appgallinas.Adaptadores;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -16,9 +17,11 @@ import java.util.ArrayList;
 
 public class AdapterGallinas extends RecyclerView.Adapter<AdapterGallinas.ViewHolder> {
     private ArrayList<Producto> names;
-    public AdapterGallinas(ArrayList<Producto> names)
+    private OnItemClickListener listener;
+    public AdapterGallinas(ArrayList<Producto> names,OnItemClickListener listener)
     {
         this.names=names;
+        this.listener=listener;
     }
 
     @NonNull
@@ -33,6 +36,7 @@ public class AdapterGallinas extends RecyclerView.Adapter<AdapterGallinas.ViewHo
         holder.titulo.setText(names.get(position).getTitulo());
         holder.descripcion.setText(names.get(position).getDescripción());
         holder.fotoproducto.setImageResource(names.get(position).getFotogallina());
+        holder.bind(names.get(position).getTitulo(), listener);
     }
 
     @Override
@@ -44,14 +48,28 @@ public class AdapterGallinas extends RecyclerView.Adapter<AdapterGallinas.ViewHo
         TextView descripcion;
         ImageView fotoproducto;
         TextView estado;
+        Button agregar;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            titulo=(TextView) itemView.findViewById(R.id.txttitulo);
-            descripcion=(TextView) itemView.findViewById(R.id.txtdescripcion);
-            fotoproducto=(ImageView) itemView.findViewById(R.id.imageproducto);
-            estado=(TextView) itemView.findViewById(R.id.txtEstado);
+            titulo=(TextView) itemView.findViewById(R.id.txttitulo1);
+            descripcion=(TextView) itemView.findViewById(R.id.txtdescripcion1);
+            fotoproducto=(ImageView) itemView.findViewById(R.id.imageproducto1);
+            estado=(TextView) itemView.findViewById(R.id.txtEstado1);
+            agregar=(Button)itemView.findViewById(R.id.btnañadir1);
         }
+        public void bind(final String name, final OnItemClickListener listener){
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    listener.onItemClick(name,getAdapterPosition());
+                }
+            });
+        }
+
+    }
+    public  interface OnItemClickListener{
+        void onItemClick(String name, int position);
 
     }
 }

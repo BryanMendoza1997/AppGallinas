@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Producto implements Asynchtask {
+public class Producto {
     private Double Precio;
     private String descripción;
     private String Estado;
@@ -138,29 +138,4 @@ public class Producto implements Asynchtask {
         this.fotoprovedor = fotoprovedor;
     }
 
-
-    public ArrayList<Producto> consultarGallinas() {
-        products=new ArrayList<>();
-        Map<String, String> datos = new HashMap<String, String>();
-        datos.put("correo", "");
-        datos.put("clave", "");
-        /*WebService ws = new WebService("https://fotos-quito-liliana-zambrano.000webhostapp.com/listarProducto.php",
-                datos, this,this);
-        ws.execute("POST");
-         */
-        return  products;
-
-    }
-
-    @Override
-    public void processFinish(String result) throws JSONException {
-        JSONObject obj = new JSONObject(result);
-        String nombre, fotoReferencia, Raza;
-        int idproducto;
-        nombre=obj.getString("nombre");
-        fotoReferencia=obj.getString("fotoReferencia");
-        Raza=obj.getString("Raza");
-        idproducto=obj.getInt("idproducto");
-        products.add( new Producto(nombre,idproducto,Raza,fotoReferencia));
-    }
 }
