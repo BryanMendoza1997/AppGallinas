@@ -32,8 +32,8 @@ public class Cliente extends AppCompatActivity {
         setToolbar();
 
         TabLayout tabLayout=(TabLayout)findViewById(R.id.tablayout);
-        tabLayout.addTab(tabLayout.newTab().setText("Ofertas").setIcon(R.drawable.));
-        tabLayout.addTab(tabLayout.newTab().setText("Pedidos").setIcon(R.drawable.));
+        tabLayout.addTab(tabLayout.newTab().setText("Ofertas").setIcon(R.drawable.ic_publicaciones));
+        tabLayout.addTab(tabLayout.newTab().setText("Pedidos").setIcon(R.drawable.ic_pedidos));
         tabLayout.addTab(tabLayout.newTab().setText("Datos").setIcon(R.drawable.ic_datospersonales));
         tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
 
@@ -72,8 +72,7 @@ public class Cliente extends AppCompatActivity {
     public void setToolbar(){
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_menu);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(false);
     }
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
