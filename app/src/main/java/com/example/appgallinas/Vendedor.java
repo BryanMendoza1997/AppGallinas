@@ -12,12 +12,10 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.Toast;
 
 import com.example.appgallinas.fragments.IngresarOferta;
 import com.example.appgallinas.fragments.IngresarProducto;
-import com.example.appgallinas.fragments.Inicio;
 import com.google.android.material.navigation.NavigationView;
 
 public class Vendedor extends AppCompatActivity {
@@ -71,8 +69,7 @@ public class Vendedor extends AppCompatActivity {
     public void setToolbar(){
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_menu);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(false);
     }
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {

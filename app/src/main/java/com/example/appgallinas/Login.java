@@ -1,7 +1,5 @@
 package com.example.appgallinas;
-
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
@@ -12,10 +10,8 @@ import android.widget.Toast;
 
 import com.example.appgallinas.WebServices.Asynchtask;
 import com.example.appgallinas.WebServices.WebService;
-
 import org.json.JSONException;
 import org.json.JSONObject;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -44,7 +40,7 @@ public class Login extends AppCompatActivity implements Asynchtask {
                 Map<String, String> datos = new HashMap<String, String>();
                 datos.put("correo", usuario.getText().toString().trim());
                 datos.put("clave", contrasenia.getText().toString().trim());
-                WebService ws = new WebService("https://fotos-quito-liliana-zambrano.000webhostapp.com/login.php",
+                WebService ws = new WebService("https://gallinas-force.000webhostapp.com/login.php",
                         datos, Login.this, Login.this);
                 ws.execute("POST");
             } else {
@@ -66,10 +62,10 @@ public class Login extends AppCompatActivity implements Asynchtask {
          if(bandera) {
 
              lista.add(String.valueOf(obj.getInt("idusuario")));
-             lista.add(obj.getString("nombre").toString());
-             lista.add(obj.getString("ROL").toString());
+             lista.add(obj.getString("nombre"));
+             lista.add(obj.getString("ROL"));
 
-           if (lista.get(2).toString().trim().equals("Cliente")) {
+           if (lista.get(2).trim().equals("Cliente")) {
 
           Intent in = new Intent(this, Cliente.class);
           in.putExtra("Idusuario",lista.get(0));

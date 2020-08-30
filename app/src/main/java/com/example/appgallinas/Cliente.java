@@ -4,9 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SearchView;
 import androidx.appcompat.widget.Toolbar;
-import androidx.core.view.GravityCompat;
-import androidx.drawerlayout.widget.DrawerLayout;
-import androidx.fragment.app.Fragment;
+import androidx.viewpager.widget.ViewPager;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -14,16 +12,15 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
-import com.example.appgallinas.fragments.Inicio;
-import com.google.android.material.navigation.NavigationView;
+import com.example.appgallinas.Adaptadores.PageAdapter;
+import com.google.android.material.tabs.TabLayout;
 
 public class Cliente extends AppCompatActivity {
 
     //prueba
     String nombre="Anonimo";
     String id="";
-    private DrawerLayout drawerLayout;
-    private NavigationView navigationView;
+
     private MenuItem iten;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,40 +29,46 @@ public class Cliente extends AppCompatActivity {
         //Id y Nombre del usuario que inicio sesion puedes ocupar estar variables para eso
         nombre=getIntent().getStringExtra("Idusuario");
         id =getIntent().getStringExtra("Nombre");
-        drawerLayout=(DrawerLayout)findViewById(R.id.drawer_layout);
-        navigationView=(NavigationView)findViewById(R.id.nav_view);
         setToolbar();
-        setFragmetDefault();
-        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+
+        TabLayout tabLayout=(TabLayout)findViewById(R.id.tablayout);
+        tabLayout.addTab(tabLayout.newTab().setText("Ofertas").setIcon(R.drawable.ic_publicaciones));
+        tabLayout.addTab(tabLayout.newTab().setText("Pedidos").setIcon(R.drawable.ic_pedidos));
+        tabLayout.addTab(tabLayout.newTab().setText("Datos").setIcon(R.drawable.ic_datospersonales));
+        tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
+
+        final ViewPager viewPager=(ViewPager) findViewById(R.id.viewPager);
+        final PageAdapter adapter = new PageAdapter(getSupportFragmentManager(),tabLayout.getTabCount());
+        viewPager.setAdapter(adapter);
+        tabLayout.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
-                navigationView.getMenu().getItem(0).setChecked(false);
-                boolean Transaccion=false;
-                Fragment fragment=null;
-                switch (menuItem.getItemId())
-                {
-                    case R.id.menu_recientes:
-                        fragment= new Inicio();
-                        Transaccion=true;
-                        break;
+            public void onTabSelected(TabLayout.Tab tab) {
+                viewPager.setCurrentItem(tab.getPosition());
+                if(tab.getPosition()==0){
+                    adapter.notifyDataSetChanged();
                 }
-                if(Transaccion)
-                {
-                    cambiarfradmento(fragment,menuItem);
-                    drawerLayout.closeDrawer(GravityCompat.START);
+                if(tab.getPosition()==1){
+                    adapter.notifyDataSetChanged();
                 }
-                return true;
+                if(tab.getPosition()==2){
+                    adapter.notifyDataSetChanged();
+                }
+            }
+
+            @Override
+            public void onTabUnselected(TabLayout.Tab tab) {
+
+            }
+
+            @Override
+            public void onTabReselected(TabLayout.Tab tab) {
+
             }
         });
+        viewPager.addOnPageChangeListener( new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
+
     }
-    public void cambiarfradmento(Fragment fragment,MenuItem item){
-        getSupportFragmentManager().beginTransaction().replace(R.id.content_frame,fragment).commit();
-        item.setChecked(true);
-        getSupportActionBar().setTitle(item.getTitle());
-    }
-    public void setFragmetDefault(){
-        cambiarfradmento(new Inicio(),navigationView.getMenu().findItem(R.id.menu_recientes));
-    }
+
     public void setToolbar(){
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -75,13 +78,13 @@ public class Cliente extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()){
-            case android.R.id.home:
+      //      case android.R.id.home:
                 //abrir el menu lateral
-                drawerLayout.openDrawer(GravityCompat.START);
-                return true;
+        //        drawerLayout.openDrawer(GravityCompat.START);
+          //      return true;
 
             case R.id.action_salir:
-                //Salir de la aplicación.
+              //  Salir de la aplicación.
                 Intent in = new Intent(this, Login.class);
                 Toast.makeText(this,"Sesión Cerrada",Toast.LENGTH_SHORT).show();
                 startActivity(in);
