@@ -9,26 +9,29 @@
     <ImageView
         android:id="@+id/imageView2"
         android:layout_width="match_parent"
-        android:layout_height="156dp"
+        android:layout_height="219dp"
+        android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="5dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="1dp"
+        android:background="#945124"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/logo"
+        app:srcCompat="@drawable/logofinal"
         tools:layout_editor_absoluteY="0dp" />
 
     <EditText
         android:id="@+id/txtcontrasenia"
-        android:layout_width="386dp"
-        android:layout_height="54dp"
+        android:layout_width="310dp"
+        android:layout_height="49dp"
         android:layout_below="@+id/txtcorreo"
         android:layout_alignParentStart="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginStart="12dp"
-        android:layout_marginTop="31dp"
+        android:layout_marginStart="27dp"
+        android:layout_marginTop="33dp"
+        android:drawableLeft="@drawable/ic_contrasenia"
         android:ems="10"
-        android:fontFamily="sans-serif"
-        android:hint="Contraseña"
+        android:fontFamily="@font/lora"
         android:inputType="textPassword"
         android:maxLength="30"
         android:textSize="24sp"
@@ -39,29 +42,18 @@
 
     <Button
         android:id="@+id/button3"
-        android:layout_width="157dp"
+        android:layout_width="308dp"
         android:layout_height="wrap_content"
         android:layout_below="@+id/txtcontrasenia"
         android:layout_alignParentStart="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginStart="115dp"
-        android:layout_marginTop="43dp"
+        android:layout_marginStart="27dp"
+        android:layout_marginTop="28dp"
         android:background="@drawable/borde_boton_inicio"
+        android:fontFamily="@font/lora"
         android:onClick="iniciar"
-        android:text="Iniciar Sesión" />
-
-    <TextView
-        android:id="@+id/textView3"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/imageView2"
-        android:layout_alignParentStart="true"
-        android:layout_marginStart="0dp"
-        android:layout_marginTop="4dp"
-        android:background="@color/Amarillo"
-        android:text="Login de Acceso"
-        android:textAlignment="center"
-        android:textSize="18sp" />
+        android:text="Iniciar Sesión"
+        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/textView4"
@@ -70,11 +62,12 @@
         android:layout_below="@+id/button3"
         android:layout_alignParentStart="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginStart="148dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginStart="135dp"
+        android:layout_marginTop="23dp"
+        android:fontFamily="@font/lora"
         android:onClick="registrarse"
         android:text="Registrarse"
-        android:textColor="@color/colorPrimaryDark"
+        android:textColor="@color/Anaranjado"
         android:textSize="18sp" />
 
     <TextView
@@ -83,36 +76,36 @@
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginStart="2dp"
-        android:layout_marginBottom="14dp"
-        android:text="Olvido su contraseña presione" />
+        android:layout_marginStart="21dp"
+        android:layout_marginBottom="8dp"
+        android:fontFamily="@font/lora"
+        android:text="Olvido su contraseña? presione" />
 
     <TextView
         android:id="@+id/textView7"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_marginStart="1dp"
-        android:layout_marginBottom="14dp"
+        android:layout_marginStart="3dp"
+        android:layout_marginBottom="8dp"
         android:layout_toEndOf="@+id/textView6"
+        android:fontFamily="@font/lora"
         android:text="aquí"
         android:textColor="@color/rojo" />
 
     <EditText
         android:id="@+id/txtcorreo"
-        android:layout_width="match_parent"
+        android:layout_width="311dp"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/textView3"
+        android:layout_below="@+id/imageView2"
         android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginStart="11dp"
-        android:layout_marginTop="14dp"
-        android:layout_marginEnd="13dp"
+        android:layout_marginStart="29dp"
+        android:layout_marginTop="34dp"
+        android:drawableLeft="@drawable/ico_email"
         android:ems="10"
-        android:hint="Correo"
+        android:fontFamily="@font/lora"
         android:inputType="textEmailAddress"
-        android:maxLength="100"
+        android:maxLength="75"
         android:textSize="24sp" />
 
 </RelativeLayout>
