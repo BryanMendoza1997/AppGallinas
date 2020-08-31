@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#945124</color>
+    <color name="colorPrimary">#f4ce31</color>
     <color name="colorPrimaryDark">#40a8c4</color>
-    <color name="colorAccent">#f4ce31</color>
+    <color name="colorAccent">#945124</color>
     <color name="Cafe">#A18262</color>
     <color name="color_icos">#a2d5f2</color>
     <color name="Amarillo">#FFEB3B</color>
