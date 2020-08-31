@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.example.appgallinas.Adaptadores.MyAdapter;
 import com.example.appgallinas.Clases.Producto;
@@ -71,19 +72,26 @@ public class PublicacionesCliente extends Fragment {
                              Bundle savedInstanceState) {
         View vista=inflater.inflate(R.layout.fragment_inicio, container, false);
         recyclerView=(RecyclerView) vista.findViewById(R.id.Recyclerview);
+        recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         products=new ArrayList<>();
         agregardatos();
         MyAdapter adapter=new MyAdapter(products);
         recyclerView.setAdapter(adapter);
+        adapter.setOnItemClickListener(new MyAdapter.OnItemClickListener() {
+            @Override
+            public void onDeleteClick(int position) {
+                Toast.makeText(getContext(),"Publicación Añadida",Toast.LENGTH_LONG).show();
+            }
+        });
         return vista;
     }
     public  void  agregardatos(){
-        products.add( new Producto(0.93,"Pareja de Guineas pequeñas tienen mes y medio a 20 la pareja También se vende Guineas adultas, precio 35 la pareja. Tele:0995645141","Viva o muerta",R.drawable.gallina_0,"Venta de gallinas de campo guinea",R.drawable.userm,"7-15 libras"));
-        products.add( new Producto(0.95,"Pareja de Alsaciana tienen mes y medio a 30 la pareja También se vende Guineas adultas, precio 35 la pareja.","Viva o muerta",R.drawable.gallinapiroca,"Venta de gallinas piroca",R.drawable.userm,"7-10 libras"));
-        products.add( new Producto(0.98,"Pareja de Polaca pequeñas tienen mes y medio a 10 la pareja También se vende Guineas adultas, precio 35 la pareja. Tele:0995645141","Viva o muerta",R.drawable.gallinapolaca,"Venta de gallinas polaca",R.drawable.userm,"6-15 libras"));
-        products.add( new Producto(0.94,"Pareja de Plymouth  tienen tres meses y medio a 16 la pareja También se vende Guineas adultas, precio 35 la pareja. Tele:095864515","Viva o muerta",R.drawable.gallinaplymouth,"Venta de gallinas aplymouth",R.drawable.userm,"8-10 libras"));
-        products.add( new Producto(1.50,"Pareja de Piroca pequeñas tienen mes y medio a 18 la pareja También se vende Guineas adultas, precio 35 la pareja. Tele:0995845142","Viva o muerta",R.drawable.gallinawyandotte,"Venta de gallinas wyandotte",R.drawable.userm,"9-13 libras"));
-        products.add( new Producto(1.70,"Pareja de Guineas pequeñas tienen mes y medio a 20 la pareja También se vende Guineas adultas, precio 35 la pareja. Tele:0995645141","Viva o muerta",R.drawable.gallinaalsaciana,"Venta de gallinas alsiana",R.drawable.userm,"5-15 libras"));
+        products.add( new Producto(1,0.93,"Pareja de Guineas pequeñas tienen mes y medio a 20 la pareja También se vende Guineas adultas, precio 35 la pareja. Tele:0995645141","Viva o muerta",R.drawable.gallina_0,"Venta de gallinas de campo guinea","7-15 libras"));
+        products.add( new Producto(2,0.95,"Pareja de Alsaciana tienen mes y medio a 30 la pareja También se vende Guineas adultas, precio 35 la pareja.","Viva o muerta",R.drawable.gallinapiroca,"Venta de gallinas piroca","7-10 libras"));
+        products.add( new Producto(3,0.98,"Pareja de Polaca pequeñas tienen mes y medio a 10 la pareja También se vende Guineas adultas, precio 35 la pareja. Tele:0995645141","Viva o muerta",R.drawable.gallinapolaca,"Venta de gallinas polaca","6-15 libras"));
+        products.add( new Producto(4,0.94,"Pareja de Plymouth  tienen tres meses y medio a 16 la pareja También se vende Guineas adultas, precio 35 la pareja. Tele:095864515","Viva o muerta",R.drawable.gallinaplymouth,"Venta de gallinas aplymouth","8-10 libras"));
+        products.add( new Producto(5,1.50,"Pareja de Piroca pequeñas tienen mes y medio a 18 la pareja También se vende Guineas adultas, precio 35 la pareja. Tele:0995845142","Viva o muerta",R.drawable.gallinawyandotte,"Venta de gallinas wyandotte","9-13 libras"));
+        products.add( new Producto(6,1.70,"Pareja de Guineas pequeñas tienen mes y medio a 20 la pareja También se vende Guineas adultas, precio 35 la pareja. Tele:0995645141","Viva o muerta",R.drawable.gallinaalsaciana,"Venta de gallinas alsiana","5-15 libras"));
     }
 }

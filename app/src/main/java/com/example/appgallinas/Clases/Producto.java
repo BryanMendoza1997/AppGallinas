@@ -18,11 +18,19 @@ public class Producto {
     private String nombre;
     private int fotogallina;
     private String titulo;
-    private int fotoprovedor;
     private int idProducto;
     private  String peso;
     private  String raza;
     private  String foto;
+    private int idoferta;
+    public int getIdoferta() {
+        return idoferta;
+    }
+
+    public void setIdoferta(int idoferta) {
+        this.idoferta = idoferta;
+    }
+
 
 
     private ArrayList<Producto> products;
@@ -88,14 +96,14 @@ public class Producto {
 
 
 
-    public Producto(Double precio, String descripción, String estado, int fotogallina, String titulo, int fotoprovedor,String peso) {
-        Precio = precio;
+    public Producto(int idoferta,Double precio, String descripción, String estado, int fotogallina, String titulo,String peso) {
+        this.Precio = precio;
         this.descripción = descripción;
-        Estado = estado;
+        this.Estado = estado;
         this.fotogallina = fotogallina;
         this.titulo = titulo;
-        this.fotoprovedor = fotoprovedor;
         this.peso=peso;
+        this.idoferta=idoferta;
     }
 
     public Double getPrecio() {
@@ -138,12 +146,5 @@ public class Producto {
         this.titulo = titulo;
     }
 
-    public int getFotoprovedor() {
-        return fotoprovedor;
-    }
-
-    public void setFotoprovedor(int fotoprovedor) {
-        this.fotoprovedor = fotoprovedor;
-    }
 
 }
