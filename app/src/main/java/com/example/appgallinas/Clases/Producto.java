@@ -33,6 +33,14 @@ public class Producto {
         this.foto = foto;
     }
 
+    public Producto(String descripción, String nombre, int idProducto, String raza, String foto) {
+        this.descripción = descripción;
+        this.nombre = nombre;
+        this.idProducto = idProducto;
+        this.raza = raza;
+        this.foto = foto;
+    }
+
     public Producto() {
 
     }

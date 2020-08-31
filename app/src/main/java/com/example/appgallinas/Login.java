@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.appgallinas.Clases.Usuario;
 import com.example.appgallinas.WebServices.Asynchtask;
 import com.example.appgallinas.WebServices.WebService;
 import org.json.JSONException;
@@ -23,6 +24,7 @@ public class Login extends AppCompatActivity implements Asynchtask {
     private EditText usuario;
     private  EditText contrasenia;
     private ProgressDialog progreso;
+    public static Usuario user;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,6 +34,7 @@ public class Login extends AppCompatActivity implements Asynchtask {
     }
     public void iniciar(View view){
 
+        //startActivity(new Intent(this, Vendedor.class));
         if(usuario.getText().toString().trim().length()>0 && contrasenia.getText().toString().trim().length()>0) {
             if (validarEmail(usuario.getText().toString().trim())) {
                 progreso = new ProgressDialog(this);
@@ -76,6 +79,9 @@ public class Login extends AppCompatActivity implements Asynchtask {
             Intent in = new Intent(this, Vendedor.class);
             in.putExtra("Idusuario",lista.get(0));
             in.putExtra("Nombre",lista.get(1));
+            user=new Usuario();
+            user.setId_usuario(Integer.parseInt(lista.get(0)));
+            user.setNombre(lista.get(1));
            startActivity(in);
           }
         }

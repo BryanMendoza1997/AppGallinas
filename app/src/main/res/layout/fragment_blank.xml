@@ -3,12 +3,129 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragments.BlankFragment">
+    tools:context=".fragments.IngresarOferta">
 
     <!-- TODO: Update blank fragment layout -->
-    <TextView
+
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="156dp"
+                android:layout_height="159dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="30dp"
+                android:src="@drawable/nuevagallina" />
+
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="120dp"
+                android:hint="@string/text_descripcion">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/txt_descripcion"
+                    android:layout_width="match_parent"
+                    android:layout_height="120dp"
+                    android:inputType="text"
+                    android:drawableStart="@drawable/ico_nombre"
+                    android:drawableTint="@color/color_icos"
+
+                    android:drawablePadding="5dp">
+                </com.google.android.material.textfield.TextInputEditText>
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/txt_pesominimo"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:layout_marginTop="20dp"
+                android:drawableStart="@drawable/ico_nombre"
+                android:drawableTint="@color/color_icos"
+                android:hint="@string/text_peso_minimo"
+                android:inputType="number">
+
+            </com.google.android.material.textfield.TextInputEditText>
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/txt_pesomaximo"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left"
+                android:drawableStart="@drawable/ico_nombre"
+                android:layout_marginTop="-43dp"
+                android:drawableTint="@color/color_icos"
+                android:hint="@string/text_peso_maximo"
+                android:inputType="number">
+
+            </com.google.android.material.textfield.TextInputEditText>
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:hint="@string/text_estado">
+
+                <com.weiwangcn.betterspinner.library.material.MaterialBetterSpinner
+                    android:id="@+id/cmb_estado"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawablePadding="6dp">
+                </com.weiwangcn.betterspinner.library.material.MaterialBetterSpinner>
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/txt_costoxmenor"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:layout_marginTop="20dp"
+                android:drawableStart="@drawable/ico_nombre"
+                android:drawableTint="@color/color_icos"
+                android:hint="@string/text_costo_xmenor"
+                android:inputType="number">
+
+            </com.google.android.material.textfield.TextInputEditText>
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/txt_costoxmayor"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left"
+                android:drawableStart="@drawable/ico_nombre"
+                android:layout_marginTop="-43dp"
+                android:drawableTint="@color/color_icos"
+                android:hint="@string/text_costo_xmayor"
+                android:inputType="number">
+
+            </com.google.android.material.textfield.TextInputEditText>
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_registrar_oferta"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="25dp"
+                android:text="@string/btn_registrar_usuario"
+                android:textAlignment="center"
+                android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+                android:textColor="@color/colorPrimary"
+                android:textSize="26dp">
+
+            </com.google.android.material.button.MaterialButton>
+        </LinearLayout>
+    </ScrollView>
+
+
 
 </FrameLayout>

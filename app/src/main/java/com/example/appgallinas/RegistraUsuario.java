@@ -77,8 +77,6 @@ public class RegistraUsuario extends AppCompatActivity implements Asynchtask {
                 Toast.makeText(this, "Ya existe una cuenta con el correo "+txt_correo.getText().toString(), Toast.LENGTH_LONG).show();
             }
         }catch (Exception e){}
-
-
     }
 
     public void valida_correeo(View v) {
