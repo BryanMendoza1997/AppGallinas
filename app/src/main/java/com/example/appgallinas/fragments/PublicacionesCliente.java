@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.example.appgallinas.Adaptadores.MyAdapter;
 import com.example.appgallinas.Clases.Producto;
@@ -71,11 +72,18 @@ public class PublicacionesCliente extends Fragment {
                              Bundle savedInstanceState) {
         View vista=inflater.inflate(R.layout.fragment_inicio, container, false);
         recyclerView=(RecyclerView) vista.findViewById(R.id.Recyclerview);
+        recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         products=new ArrayList<>();
         agregardatos();
         MyAdapter adapter=new MyAdapter(products);
         recyclerView.setAdapter(adapter);
+        adapter.setOnItemClickListener(new MyAdapter.OnItemClickListener() {
+            @Override
+            public void onDeleteClick(int position) {
+                Toast.makeText(getContext(),String.valueOf(position),Toast.LENGTH_LONG).show();
+            }
+        });
         return vista;
     }
     public  void  agregardatos(){

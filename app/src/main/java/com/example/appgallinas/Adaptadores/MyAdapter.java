@@ -16,6 +16,14 @@ import java.util.ArrayList;
 
 public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
     private ArrayList<Producto> names;
+    private OnItemClickListener mListener;
+    public interface OnItemClickListener {
+
+        void onDeleteClick(int position);
+    }
+    public void setOnItemClickListener(OnItemClickListener listener) {
+        mListener = listener;
+    }
     public MyAdapter(ArrayList<Producto> names)
     {
         this.names=names;
@@ -24,8 +32,9 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
     @NonNull
     @Override
     public MyAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view= LayoutInflater.from(parent.getContext()).inflate(R.layout.recicler_view_item,null,false);
-        return new ViewHolder(view);
+        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.recicler_view_item, parent, false);
+        ViewHolder evh = new ViewHolder(v, mListener);
+        return evh;
     }
 
     @Override
@@ -51,7 +60,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
         TextView peso;
         TextView estado;
 
-        public ViewHolder(@NonNull View itemView) {
+        public ViewHolder(View itemView, final OnItemClickListener listener) {
             super(itemView);
             titulo=(TextView) itemView.findViewById(R.id.txttitulo);
             descripcion=(TextView) itemView.findViewById(R.id.txtdescripcion);
