@@ -11,14 +11,15 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.appgallinas.Clases.Producto;
+import com.example.appgallinas.Clases.ProductoOferta;
 import com.example.appgallinas.R;
 
 import java.util.ArrayList;
 
 public class AdapterGallinas extends RecyclerView.Adapter<AdapterGallinas.ViewHolder> {
-    private ArrayList<Producto> names;
+    private ArrayList<ProductoOferta> names;
     private OnItemClickListener listener;
-    public AdapterGallinas(ArrayList<Producto> names,OnItemClickListener listener)
+    public AdapterGallinas(ArrayList<ProductoOferta> names, OnItemClickListener listener)
     {
         this.names=names;
         this.listener=listener;
@@ -34,9 +35,9 @@ public class AdapterGallinas extends RecyclerView.Adapter<AdapterGallinas.ViewHo
     @Override
     public void onBindViewHolder(@NonNull AdapterGallinas.ViewHolder holder, int position) {
         holder.titulo.setText(names.get(position).getRaza());
-        holder.descripcion.setText(names.get(position).getDescripción());
+        holder.descripcion.setText(names.get(position).getDescripcion());
         //holder.fotoproducto.setImageResource(names.get(position).getFotogallina());
-        holder.bind(names.get(position).getTitulo(), listener);
+        holder.bind(names.get(position).getNombre(), listener);
     }
 
     @Override

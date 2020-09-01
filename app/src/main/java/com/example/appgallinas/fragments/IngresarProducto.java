@@ -18,6 +18,7 @@ import android.view.ViewGroup;
 import com.example.appgallinas.Adaptadores.AdapterGallinas;
 import com.example.appgallinas.Adaptadores.MyAdapter;
 import com.example.appgallinas.Clases.Producto;
+import com.example.appgallinas.Clases.ProductoOferta;
 import com.example.appgallinas.Login;
 import com.example.appgallinas.R;
 import com.example.appgallinas.Vendedor;
@@ -81,8 +82,8 @@ public class IngresarProducto extends Fragment implements Asynchtask  {
     }
 
 
-    ArrayList<Producto> products;
-    Producto p= new Producto();
+    ArrayList<ProductoOferta> products;
+    ProductoOferta p = new ProductoOferta();
     RecyclerView recyclerView;
     Bundle args = new Bundle();
     @Override
@@ -98,8 +99,9 @@ public class IngresarProducto extends Fragment implements Asynchtask  {
             @Override
             public void onItemClick(String name, int position) {
                 Fragment seguir= new IngresarOferta();
-                args.putInt("id_producto", products.get(position).getIdProducto());
-                args.putString("url_foto", products.get(position).getFoto());
+
+                args.putInt("id_producto", products.get(position).getId_producto());
+                args.putString("url_foto", products.get(position).getUrl_foto());
                 seguir.setArguments(args);
                 FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
                 FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
@@ -127,7 +129,7 @@ public class IngresarProducto extends Fragment implements Asynchtask  {
         JSONArray as= s.getJSONArray("Producto");
         for(int i=0;i<as.length();i++){
             JSONObject d = as.getJSONObject(i);
-            products.add(new Producto(d.getString("descripcion"),d.getString("nombre") , Integer.parseInt(d.getString("Id_Producto")), d.getString("raza"), d.getString("foto_ref")));
+            products.add(new ProductoOferta(d.getString("descripcion"),d.getString("nombre") , Integer.parseInt(d.getString("Id_Producto")), d.getString("raza"), d.getString("foto_ref")));
         }
     }
 }

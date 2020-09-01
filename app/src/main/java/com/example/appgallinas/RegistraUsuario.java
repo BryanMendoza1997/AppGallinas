@@ -9,21 +9,25 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.appgallinas.Clases.Usuario;
 import com.example.appgallinas.WebServices.Asynchtask;
 import com.example.appgallinas.WebServices.WebService;
 import com.google.android.material.textfield.TextInputEditText;
 import com.weiwangcn.betterspinner.library.material.MaterialBetterSpinner;
 
 import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.HashMap;
 import java.util.Map;
+
+import static com.example.appgallinas.Login.user;
 
 public class RegistraUsuario extends AppCompatActivity implements Asynchtask {
 
     private TextInputEditText txt_nombre, txt_apellido, txt_correo, txt_celular, txt_ciudad, txt_direccion, txt_clave, txt_verifica_clave, txt_rol;
     private String ejec_service="";
-    private Boolean existe=null;
+    private Boolean existe=false;
     private String[] tiposIncidencias={"Cliente","Vendedor"};
     private MaterialBetterSpinner tipo_usuario;
     private ProgressDialog dialog;
@@ -65,7 +69,7 @@ public class RegistraUsuario extends AppCompatActivity implements Asynchtask {
                     datos.put("ROL", tipo_usuario.getText().toString());
                     ejec_service = "inserta_usuario";
 
-                    WebService ws = new WebService("https://fotos-quito-liliana-zambrano.000webhostapp.com/insertarUsuario.php",
+                    WebService ws = new WebService("https://gallinas-force.000webhostapp.com/insertarUsuario.php",
                             datos, this, this);
                     ws.execute("POST");
                 } else {
@@ -80,6 +84,8 @@ public class RegistraUsuario extends AppCompatActivity implements Asynchtask {
     }
 
     public void valida_correeo(View v) {
+        registrar();
+        /*
         Map<String, String> datos = new HashMap<String, String>();
         datos.put("correo",txt_correo.getText().toString());
         ejec_service="consulta_correo";
@@ -87,7 +93,7 @@ public class RegistraUsuario extends AppCompatActivity implements Asynchtask {
         dialog.setMessage("Registrando..."); dialog.show();
         WebService ws= new WebService("https://fotos-quito-liliana-zambrano.000webhostapp.com/validarcorreo.php",
                 datos, this, this);
-        ws.execute("POST");
+        ws.execute("POST");*/
     }
 
 
@@ -97,9 +103,10 @@ public class RegistraUsuario extends AppCompatActivity implements Asynchtask {
         if(ejec_service.equals("inserta_usuario")){
             result = result.replace("\r\n","");
             if(result.equals("datos_guardados")) {
-                dialog.hide();
+                //dialog.hide();
+                trae_datos();
                 Toast.makeText(this, "Registrado correctamente", Toast.LENGTH_LONG).show();
-                activity_correspondiente();
+
             }
             else
                 Toast.makeText(this, "Error al registrar "+result, Toast.LENGTH_LONG).show();
@@ -112,13 +119,33 @@ public class RegistraUsuario extends AppCompatActivity implements Asynchtask {
                 registrar();
 
             }
+        }else if(ejec_service.equals("traer_datos")){
+            JSONObject obj = new JSONObject(result);
+            user = new Usuario();
+            user.setId_usuario(obj.getInt("idusuario"));
+            user.setNombre(obj.getString("nombre"));
+            activity_correspondiente(obj.getInt("idusuario"), obj.getString("nombre"));
         }
     }
 
-    private void activity_correspondiente() {
+    private void trae_datos() {
+        Map<String, String> datos = new HashMap<String, String>();
+        datos.put("correo", txt_correo.getText().toString().trim());
+        datos.put("clave", txt_clave.getText().toString().trim());
+        ejec_service="traer_datos";
+        WebService ws = new WebService("https://gallinas-force.000webhostapp.com/login.php",
+                datos, this, this);
+        ws.execute("POST");
+    }
+
+    private void activity_correspondiente(int id_usuario, String nombre_usuario) {
         if(tipo_usuario.getText().toString().equals("Cliente")) {
             startActivity(new Intent(this, Cliente.class));
-        }else
-            startActivity(new Intent(this, Vendedor.class));
+        }else {
+            Intent intent = new Intent(this, Vendedor.class);
+            intent.putExtra("Idusuario",id_usuario);
+            intent.putExtra("Nombre",nombre_usuario);
+            startActivity(intent);
+        }
     }
 }
