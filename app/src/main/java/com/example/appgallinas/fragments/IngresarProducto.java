@@ -99,7 +99,6 @@ public class IngresarProducto extends Fragment implements Asynchtask  {
             @Override
             public void onItemClick(String name, int position) {
                 Fragment seguir= new IngresarOferta();
-
                 args.putInt("id_producto", products.get(position).getId_producto());
                 args.putString("url_foto", products.get(position).getUrl_foto());
                 seguir.setArguments(args);

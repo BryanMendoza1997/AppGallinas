@@ -12,45 +12,48 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Producto {
-    private Double Precio;
+    private String Precio;
     private String descripción;
     private String Estado;
     private String nombre;
-    private int fotogallina;
+    private String fotogallina;
     private String titulo;
     private int idProducto;
     private  String peso;
+    private  String ciudad;
     private  String raza;
     private  String foto;
     private int idoferta;
+    public Producto(){
+
+    }
+
+    public Producto(int idoferta,String precio, String descripción, String estado, String fotogallina, String titulo,String peso,String ciudad) {
+        this.Precio = precio;
+        this.descripción = descripción;
+        this.Estado = estado;
+        this.fotogallina = fotogallina;
+        this.titulo = titulo;
+        this.peso=peso;
+        this.idoferta=idoferta;
+        this.ciudad=ciudad;
+    }
+
+    public String getCiudad() {
+        return ciudad;
+    }
+
+    public void setCiudad(String ciudad) {
+        this.ciudad = ciudad;
+    }
+
+
     public int getIdoferta() {
         return idoferta;
     }
 
     public void setIdoferta(int idoferta) {
         this.idoferta = idoferta;
-    }
-
-
-
-    private ArrayList<Producto> products;
-    public Producto(String nombre, int idProducto, String raza, String foto) {
-        this.nombre = nombre;
-        this.idProducto = idProducto;
-        this.raza = raza;
-        this.foto = foto;
-    }
-
-    public Producto(String descripción, String nombre, int idProducto, String raza, String foto) {
-        this.descripción = descripción;
-        this.nombre = nombre;
-        this.idProducto = idProducto;
-        this.raza = raza;
-        this.foto = foto;
-    }
-
-    public Producto() {
-
     }
 
     public String getRaza() {
@@ -93,24 +96,11 @@ public class Producto {
         this.peso = peso;
     }
 
-
-
-
-    public Producto(int idoferta,Double precio, String descripción, String estado, int fotogallina, String titulo,String peso) {
-        this.Precio = precio;
-        this.descripción = descripción;
-        this.Estado = estado;
-        this.fotogallina = fotogallina;
-        this.titulo = titulo;
-        this.peso=peso;
-        this.idoferta=idoferta;
-    }
-
-    public Double getPrecio() {
+    public String getPrecio() {
         return Precio;
     }
 
-    public void setPrecio(Double precio) {
+    public void setPrecio(String precio) {
         Precio = precio;
     }
 
@@ -130,11 +120,11 @@ public class Producto {
         Estado = estado;
     }
 
-    public int getFotogallina() {
+    public String getFotogallina() {
         return fotogallina;
     }
 
-    public void setFotogallina(int fotogallina) {
+    public void setFotogallina(String fotogallina) {
         this.fotogallina = fotogallina;
     }
 

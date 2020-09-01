@@ -1,30 +1,43 @@
 package com.example.appgallinas.fragments;
 
-import android.content.res.ColorStateList;
+import android.app.ProgressDialog;
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 import com.example.appgallinas.Adaptadores.MyAdapter;
 import com.example.appgallinas.Clases.Producto;
+import com.example.appgallinas.Clases.ProductoOferta;
 import com.example.appgallinas.R;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.example.appgallinas.WebServices.Asynchtask;
+import com.example.appgallinas.WebServices.WebService;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * A simple {@link Fragment} subclass.
  * Use the {@link PublicacionesCliente #newInstance} factory method to
  * create an instance of this fragment.
  */
-public class PublicacionesCliente extends Fragment {
+public class PublicacionesCliente extends Fragment  implements Asynchtask {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -67,6 +80,8 @@ public class PublicacionesCliente extends Fragment {
     }
     ArrayList<Producto> products;
     RecyclerView recyclerView;
+    MyAdapter adapter;
+    private ProgressDialog progreso;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -75,8 +90,8 @@ public class PublicacionesCliente extends Fragment {
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         products=new ArrayList<>();
-        agregardatos();
-        MyAdapter adapter=new MyAdapter(products);
+        addDatos();
+        adapter=new MyAdapter(products,getContext());
         recyclerView.setAdapter(adapter);
         adapter.setOnItemClickListener(new MyAdapter.OnItemClickListener() {
             @Override
@@ -86,12 +101,68 @@ public class PublicacionesCliente extends Fragment {
         });
         return vista;
     }
-    public  void  agregardatos(){
-        products.add( new Producto(1,0.93,"Pareja de Guineas pequeñas tienen mes y medio a 20 la pareja También se vende Guineas adultas, precio 35 la pareja. Tele:0995645141","Viva o muerta",R.drawable.gallina_0,"Venta de gallinas de campo guinea","7-15 libras"));
-        products.add( new Producto(2,0.95,"Pareja de Alsaciana tienen mes y medio a 30 la pareja También se vende Guineas adultas, precio 35 la pareja.","Viva o muerta",R.drawable.gallinapiroca,"Venta de gallinas piroca","7-10 libras"));
-        products.add( new Producto(3,0.98,"Pareja de Polaca pequeñas tienen mes y medio a 10 la pareja También se vende Guineas adultas, precio 35 la pareja. Tele:0995645141","Viva o muerta",R.drawable.gallinapolaca,"Venta de gallinas polaca","6-15 libras"));
-        products.add( new Producto(4,0.94,"Pareja de Plymouth  tienen tres meses y medio a 16 la pareja También se vende Guineas adultas, precio 35 la pareja. Tele:095864515","Viva o muerta",R.drawable.gallinaplymouth,"Venta de gallinas aplymouth","8-10 libras"));
-        products.add( new Producto(5,1.50,"Pareja de Piroca pequeñas tienen mes y medio a 18 la pareja También se vende Guineas adultas, precio 35 la pareja. Tele:0995845142","Viva o muerta",R.drawable.gallinawyandotte,"Venta de gallinas wyandotte","9-13 libras"));
-        products.add( new Producto(6,1.70,"Pareja de Guineas pequeñas tienen mes y medio a 20 la pareja También se vende Guineas adultas, precio 35 la pareja. Tele:0995645141","Viva o muerta",R.drawable.gallinaalsaciana,"Venta de gallinas alsiana","5-15 libras"));
+    public  void  addDatos(){
+
+        progreso=new ProgressDialog(getContext());
+        progreso.setMessage("Cargando...");
+        Map<String, String> datos = new HashMap<String, String>();
+        WebService ws= new WebService("https://gallinas-force.000webhostapp.com/ofertasuscripcion.php", datos, this.getContext(), this);
+        ws.execute("POST");
+        progreso.show();
+    }
+
+    public void agregardatos(){
+
+        RequestQueue request = Volley.newRequestQueue(this.getContext());
+        progreso=new ProgressDialog(getContext());
+        progreso.setMessage("Cargando...");
+        progreso.show();
+        StringRequest volley=new StringRequest(Request.Method.POST, "https://gallinas-force.000webhostapp.com/ofertasuscripcion.php", new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                try {
+                    JSONObject object = new JSONObject(response);
+                    JSONArray Jarray  = object.getJSONArray("Producto");
+                for(int i=0; i< Jarray.length();i++){
+                    JSONObject banco= Jarray.getJSONObject(i);
+                    products.add(new Producto(Integer.parseInt(banco.getString("idoferta")),
+                            banco.getString("PrecioMenor")+ "-" + banco.getString("PrecioMayor"),
+                            banco.getString("descripcion"),
+                            banco.getString("tipo"),
+                            banco.getString("foto_ref"),
+                            banco.getString("raza"),
+                            banco.getString("Rango_min_Peso")+ "-" + banco.getString("Rango_max_Peso"),
+                            banco.getString("ciudad")+", Ecuador"));
+                    }
+                }
+                catch (JSONException e) {
+                        progreso.hide();
+                        e.printStackTrace();
+                    }
+
+            } }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+            }
+        });
+       request.add(volley);
+    }
+
+    @Override
+    public void processFinish(String result) throws JSONException {
+        JSONObject s = new JSONObject(result);
+        JSONArray as= s.getJSONArray("Producto");
+        for(int i=0;i<as.length();i++){
+            JSONObject d = as.getJSONObject(i);
+            products.add(new Producto(Integer.parseInt(d.getString("idoferta")),
+                    d.getString("PrecioMenor")+ "-" + d.getString("PrecioMayor"),
+                    d.getString("descripcion"),
+                    d.getString("tipo"),
+                    d.getString("foto_ref"),
+                    d.getString("raza"),
+                    d.getString("Rango_min_Peso")+ "-" + d.getString("Rango_max_Peso"),
+                    d.getString("ciudad")+", Ecuador"));
+        }
+        progreso.hide();
     }
 }

@@ -1,9 +1,11 @@
 package com.example.appgallinas.Adaptadores;
 
+import android.content.Context;
 import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.ViewParent;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -11,6 +13,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.example.appgallinas.Clases.Producto;
 import com.example.appgallinas.R;
 
@@ -19,15 +22,17 @@ import java.util.ArrayList;
 public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
     private ArrayList<Producto> names;
     private OnItemClickListener mListener;
+    private Context contexto;
     public interface OnItemClickListener {
         void onDeleteClick(int position);
     }
     public void setOnItemClickListener(OnItemClickListener listener) {
         mListener = listener;
     }
-    public MyAdapter(ArrayList<Producto> names)
+    public MyAdapter(ArrayList<Producto> names, Context context)
     {
         this.names=names;
+        this.contexto=context;
     }
 
     @Override
@@ -41,9 +46,12 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
     public void onBindViewHolder(MyAdapter.ViewHolder holder, int position) {
         holder.titulo.setText(names.get(position).getTitulo());
         holder.descripcion.setText(names.get(position).getDescripción());
-        holder.fotoproducto.setImageResource(names.get(position).getFotogallina());
+        Glide.with(contexto)
+                .load(names.get(position).getFotogallina())
+                .into(holder.fotoproducto);
         holder.peso.setText(names.get(position).getPeso());
-        holder.precio.setText( String.valueOf(names.get(position).getPrecio()));
+        holder.precio.setText(names.get(position).getPrecio());
+        holder.ciudad.setText(names.get(position).getCiudad());
     }
 
     @Override
@@ -57,6 +65,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
         TextView precio;
         TextView peso;
         TextView estado;
+        TextView ciudad;
         Button guardar;
 
         public ViewHolder(View itemView, final OnItemClickListener listener) {
@@ -68,6 +77,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
             peso=(TextView) itemView.findViewById(R.id.txtpeso);
             estado=(TextView) itemView.findViewById(R.id.txtestado);
             guardar=(Button)itemView.findViewById(R.id.btnañadircli);
+            ciudad=(TextView) itemView.findViewById(R.id.txtciudad);
 
             guardar.setOnClickListener(new View.OnClickListener() {
                 @Override
