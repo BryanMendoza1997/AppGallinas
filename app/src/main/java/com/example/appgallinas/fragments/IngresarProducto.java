@@ -82,7 +82,7 @@ public class IngresarProducto extends Fragment implements Asynchtask  {
     }
 
 
-    ArrayList<ProductoOferta> products;
+    ArrayList<ProductoOferta> products=null;
     ProductoOferta p = new ProductoOferta();
     RecyclerView recyclerView;
     Bundle args = new Bundle();
@@ -95,23 +95,6 @@ public class IngresarProducto extends Fragment implements Asynchtask  {
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         products=new ArrayList<>();
         agregardatos();
-        AdapterGallinas adapter=new AdapterGallinas(products, new AdapterGallinas.OnItemClickListener() {
-            @Override
-            public void onItemClick(String name, int position) {
-                Fragment seguir= new IngresarOferta();
-                args.putInt("id_producto", products.get(position).getId_producto());
-                args.putString("url_foto", products.get(position).getUrl_foto());
-                seguir.setArguments(args);
-                FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
-                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                fragmentTransaction.replace(R.id.content_frame, seguir);
-                fragmentTransaction.addToBackStack(null);
-                fragmentTransaction.commit();
-            }
-        });
-
-
-        recyclerView.setAdapter(adapter);
         return vista;
     }
     public  void  agregardatos(){
@@ -130,5 +113,24 @@ public class IngresarProducto extends Fragment implements Asynchtask  {
             JSONObject d = as.getJSONObject(i);
             products.add(new ProductoOferta(d.getString("descripcion"),d.getString("nombre") , Integer.parseInt(d.getString("Id_Producto")), d.getString("raza"), d.getString("foto_ref")));
         }
+        listar_gallinas();
+    }
+
+    private void listar_gallinas() {
+        AdapterGallinas adapter=new AdapterGallinas(products, new AdapterGallinas.OnItemClickListener() {
+            @Override
+            public void onItemClick(String name, int position) {
+                Fragment seguir= new IngresarOferta();
+                args.putInt("id_producto", products.get(position).getId_producto());
+                args.putString("url_foto", products.get(position).getUrl_foto());
+                seguir.setArguments(args);
+                FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                fragmentTransaction.replace(R.id.content_frame, seguir);
+                fragmentTransaction.addToBackStack(null);
+                fragmentTransaction.commit();
+            }
+        });
+        recyclerView.setAdapter(adapter);
     }
 }

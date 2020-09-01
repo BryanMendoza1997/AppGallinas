@@ -138,12 +138,12 @@ public class RegistraUsuario extends AppCompatActivity implements Asynchtask {
         ws.execute("POST");
     }
 
-    private void activity_correspondiente(int id_usuario, String nombre_usuario) {
+    private void activity_correspondiente(Integer id_usuario, String nombre_usuario) {
         if(tipo_usuario.getText().toString().equals("Cliente")) {
             startActivity(new Intent(this, Cliente.class));
         }else {
             Intent intent = new Intent(this, Vendedor.class);
-            intent.putExtra("Idusuario",id_usuario);
+            intent.putExtra("id_user",String.valueOf(id_usuario));
             intent.putExtra("Nombre",nombre_usuario);
             startActivity(intent);
         }

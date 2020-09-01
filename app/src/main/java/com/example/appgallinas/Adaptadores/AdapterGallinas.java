@@ -36,7 +36,7 @@ public class AdapterGallinas extends RecyclerView.Adapter<AdapterGallinas.ViewHo
     public void onBindViewHolder(@NonNull AdapterGallinas.ViewHolder holder, int position) {
         holder.titulo.setText(names.get(position).getRaza());
         holder.descripcion.setText(names.get(position).getDescripcion());
-        //holder.fotoproducto.setImageResource(names.get(position).getFotogallina());
+        //holder.fotoproducto.setImageResource(names.get(position).getUrl_foto());
         holder.bind(names.get(position).getNombre(), listener);
     }
 

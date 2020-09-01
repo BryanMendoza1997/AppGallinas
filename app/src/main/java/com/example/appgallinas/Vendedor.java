@@ -20,8 +20,8 @@ import com.google.android.material.navigation.NavigationView;
 
 public class Vendedor extends AppCompatActivity {
 
-    String nombre="Anonimo";
-    String id="";
+    //String nombre;
+    //Integer id;
     private DrawerLayout drawerLayout;
     private NavigationView navigationView;
     @Override
@@ -29,8 +29,9 @@ public class Vendedor extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_vendedor);
         //Id y Nombre del usuario que inicio sesion puedes ocupar estar variables para eso
-        nombre=getIntent().getStringExtra("Idusuario");
-        id =getIntent().getStringExtra("Nombre");
+        //nombre=getIntent().getStringExtra("Nombre");
+        //String ids=getIntent().getStringExtra("id_user");
+        //id =Integer.valueOf(getIntent().getStringExtra("Idusuario"));
         drawerLayout=(DrawerLayout)findViewById(R.id.drawer_layout_vendedor);
         navigationView=(NavigationView)findViewById(R.id.nav_view_vendedor);
         setToolbar();
