@@ -8,6 +8,8 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -17,6 +19,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.appgallinas.Adaptadores.AdapterGallinas;
 import com.example.appgallinas.Adaptadores.MyAdapter;
 import com.example.appgallinas.Clases.Producto;
 import com.example.appgallinas.Clases.ProductoOferta;
@@ -91,14 +94,6 @@ public class PublicacionesCliente extends Fragment  implements Asynchtask {
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         products=new ArrayList<>();
         addDatos();
-        adapter=new MyAdapter(products,getContext());
-        recyclerView.setAdapter(adapter);
-        adapter.setOnItemClickListener(new MyAdapter.OnItemClickListener() {
-            @Override
-            public void onDeleteClick(int position) {
-                Toast.makeText(getContext(),"Publicación Añadida",Toast.LENGTH_LONG).show();
-            }
-        });
         return vista;
     }
     public  void  addDatos(){
@@ -146,6 +141,7 @@ public class PublicacionesCliente extends Fragment  implements Asynchtask {
             }
         });
        request.add(volley);
+        progreso.hide();
     }
 
     @Override
@@ -155,14 +151,25 @@ public class PublicacionesCliente extends Fragment  implements Asynchtask {
         for(int i=0;i<as.length();i++){
             JSONObject d = as.getJSONObject(i);
             products.add(new Producto(Integer.parseInt(d.getString("idoferta")),
-                    d.getString("PrecioMenor")+ "-" + d.getString("PrecioMayor"),
+                    d.getString("PrecioMenor")+ " - " + d.getString("PrecioMayor"),
                     d.getString("descripcion"),
                     d.getString("tipo"),
                     d.getString("foto_ref"),
                     d.getString("raza"),
-                    d.getString("Rango_min_Peso")+ "-" + d.getString("Rango_max_Peso"),
+                    d.getString("Rango_min_Peso")+ " - " + d.getString("Rango_max_Peso"),
                     d.getString("ciudad")+", Ecuador"));
         }
+        listar_publicaciones();
         progreso.hide();
+    }
+    private void listar_publicaciones() {
+        adapter=new MyAdapter(products,getContext());
+        recyclerView.setAdapter(adapter);
+        adapter.setOnItemClickListener(new MyAdapter.OnItemClickListener() {
+            @Override
+            public void onDeleteClick(int position) {
+                Toast.makeText(getContext(),"Publicación Añadida",Toast.LENGTH_LONG).show();
+            }
+        });
     }
 }
