@@ -1,23 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
-    <group android:checkableBehavior="single">
-        <item
-            android:id="@+id/menu_principal"
-            android:icon="@drawable/ic_principal"
-            android:title="Principal"/>
+    <item android:id="@+id/menu"
+        android:title="INICIO">
+    <menu>
         <item
             android:id="@+id/menu_social"
             android:icon="@drawable/ic_premiun"
-            android:title="Ser Premiun"/>
+            android:title="Publicaciones Premiun"/>
         <item
             android:id="@+id/menu_notificacion"
             android:icon="@drawable/ic_notificaciones"
             android:title="Notificaciones"/>
-        <item
-            android:id="@+id/menu_foros"
-            android:icon="@drawable/ic_mensajes"
-            android:title="Comentarios"/>
-    </group>
+       </menu>
+    </item>
     <item
         android:id="@+id/menu_submenu"
         android:title="PRODUCTO">
@@ -44,10 +39,6 @@
                 android:id="@+id/menu_destacados"
                 android:icon="@drawable/ic_actualizardatos"
                 android:title="Actualizar datos"/>
-            <item
-                android:id="@+id/menu_propuestos"
-                android:icon="@drawable/ic_estrella"
-                android:title="Ver Valoración"/>
         </menu>
     </item>
 </menu>

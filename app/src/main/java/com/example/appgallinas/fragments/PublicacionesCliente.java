@@ -151,12 +151,12 @@ public class PublicacionesCliente extends Fragment  implements Asynchtask {
         for(int i=0;i<as.length();i++){
             JSONObject d = as.getJSONObject(i);
             products.add(new Producto(Integer.parseInt(d.getString("idoferta")),
-                    d.getString("PrecioMenor")+ " - " + d.getString("PrecioMayor"),
+                    "min: "+d.getString("PrecioMenor")+ "$  max: " + d.getString("PrecioMayor")+"$",
                     d.getString("descripcion"),
                     d.getString("tipo"),
                     d.getString("foto_ref"),
-                    d.getString("raza"),
-                    d.getString("Rango_min_Peso")+ " - " + d.getString("Rango_max_Peso"),
+                    "Venta de "+d.getString("raza"),
+                    d.getString("Rango_min_Peso")+ " - " + d.getString("Rango_max_Peso")+" lb",
                     d.getString("ciudad")+", Ecuador"));
         }
         listar_publicaciones();
@@ -168,7 +168,7 @@ public class PublicacionesCliente extends Fragment  implements Asynchtask {
         adapter.setOnItemClickListener(new MyAdapter.OnItemClickListener() {
             @Override
             public void onDeleteClick(int position) {
-                Toast.makeText(getContext(),"Publicación Añadida",Toast.LENGTH_LONG).show();
+                Toast.makeText(getContext(),"Publicación Guardada",Toast.LENGTH_SHORT).show();
             }
         });
     }

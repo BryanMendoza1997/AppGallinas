@@ -90,7 +90,6 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
                     }
                     guardar.setEnabled(false);
                     guardar.setText("Añadido");
-                    guardar.setBackgroundColor(Color.RED);
                 }
             });
         }

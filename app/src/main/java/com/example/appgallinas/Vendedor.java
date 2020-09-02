@@ -39,7 +39,6 @@ public class Vendedor extends AppCompatActivity {
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
-                navigationView.getMenu().getItem(0).setChecked(false);
                 boolean Transaccion=false;
                 Fragment fragment=null;
                 switch (menuItem.getItemId())

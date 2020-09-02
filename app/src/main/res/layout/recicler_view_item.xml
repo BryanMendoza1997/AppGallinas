@@ -24,16 +24,14 @@
                 android:layout_width="177dp"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/txttitulo"
-                android:layout_alignParentEnd="true"
-                android:layout_marginStart="5dp"
-                android:layout_marginTop="17dp"
-                android:layout_marginEnd="26dp"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="13dp"
                 android:layout_toEndOf="@+id/imageView"
                 android:text="Quevedo, Ecuador" />
 
             <TextView
                 android:id="@+id/txttitulo"
-                android:layout_width="363dp"
+                android:layout_width="309dp"
                 android:layout_height="wrap_content"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentTop="true"
@@ -59,8 +57,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/txtciudad"
-                android:layout_marginStart="14dp"
-                android:layout_marginTop="15dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="12dp"
                 android:layout_toEndOf="@+id/imageproducto"
                 android:text="Peso:"
                 android:textColor="#0E0E0E"
@@ -71,22 +69,20 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/textopeso"
-                android:layout_marginStart="15dp"
-                android:layout_marginTop="16dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="14dp"
                 android:layout_toEndOf="@+id/imageproducto"
-                android:text="Precio por libra:"
+                android:text="Precio:"
                 android:textColor="#0E0E0E"
                 android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/txtprecio"
-                android:layout_width="114dp"
-                android:layout_height="19dp"
+                android:layout_width="85dp"
+                android:layout_height="wrap_content"
                 android:layout_below="@+id/textopeso"
-                android:layout_alignParentBottom="true"
-                android:layout_marginStart="12dp"
-                android:layout_marginTop="17dp"
-                android:layout_marginBottom="156dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="15dp"
                 android:layout_toEndOf="@+id/textView2"
                 android:text="0,93" />
 
@@ -95,8 +91,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/textView2"
-                android:layout_marginStart="15dp"
-                android:layout_marginTop="20dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="26dp"
                 android:layout_toEndOf="@+id/imageproducto"
                 android:text="Estado: "
                 android:textColor="#090909"
@@ -107,8 +103,8 @@
                 android:layout_width="102dp"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/textView2"
-                android:layout_marginStart="9dp"
-                android:layout_marginTop="19dp"
+                android:layout_marginStart="3dp"
+                android:layout_marginTop="26dp"
                 android:layout_toEndOf="@+id/textView5"
                 android:text="Viva o Muerta" />
 
@@ -117,8 +113,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/txttitulo"
-                android:layout_marginStart="12dp"
-                android:layout_marginTop="15dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
                 android:layout_toEndOf="@+id/imageproducto"
                 app:srcCompat="@drawable/ic_ubicacion" />
 
@@ -137,10 +133,10 @@
                 android:id="@+id/btnañadircli"
                 android:layout_width="101dp"
                 android:layout_height="33dp"
-                android:layout_below="@+id/txtdescripcion"
                 android:layout_alignParentEnd="true"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="12dp"
+                android:layout_alignParentBottom="true"
+                android:layout_marginEnd="9dp"
+                android:layout_marginBottom="11dp"
                 android:background="@android:color/holo_blue_light"
                 android:text="Añadir"
                 android:textColor="#ECE8E8" />
@@ -150,12 +146,21 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/txtciudad"
-                android:layout_alignParentEnd="true"
-                android:layout_marginStart="7dp"
-                android:layout_marginTop="15dp"
-                android:layout_marginEnd="20dp"
+                android:layout_marginStart="17dp"
+                android:layout_marginTop="13dp"
                 android:layout_toEndOf="@+id/textopeso"
                 android:text="5-10 libras" />
+
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="17dp"
+                android:layout_marginEnd="7dp"
+                android:text="Disponible"
+                android:textColor="#20E128" />
 
 
         </RelativeLayout>
