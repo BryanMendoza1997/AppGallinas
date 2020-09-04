@@ -52,7 +52,7 @@ public class IngresarOferta extends Fragment implements View.OnClickListener, As
     private MaterialBetterSpinner estado;
     private Button btn_registrar_oferta;
 
-    private String[] estados={"Viva","Muerta"};
+    private String[] estados={"En pie","Pelada", "En pie o Pelada"};
     private Integer id_producto, id_usuario;
     private String url_foto;
 

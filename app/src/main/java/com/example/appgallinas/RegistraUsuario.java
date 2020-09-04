@@ -27,7 +27,7 @@ public class RegistraUsuario extends AppCompatActivity implements Asynchtask {
 
     private TextInputEditText txt_nombre, txt_apellido, txt_correo, txt_celular, txt_ciudad, txt_direccion, txt_clave, txt_verifica_clave, txt_rol;
     private String ejec_service="";
-    private Boolean existe=false;
+    private Boolean existe=null;
     private String[] tiposIncidencias={"Cliente","Vendedor"};
     private MaterialBetterSpinner tipo_usuario;
     private ProgressDialog dialog;
@@ -84,16 +84,16 @@ public class RegistraUsuario extends AppCompatActivity implements Asynchtask {
     }
 
     public void valida_correeo(View v) {
-        registrar();
-        /*
+        //registrar();
+
         Map<String, String> datos = new HashMap<String, String>();
         datos.put("correo",txt_correo.getText().toString());
         ejec_service="consulta_correo";
         dialog = new ProgressDialog(this);
         dialog.setMessage("Registrando..."); dialog.show();
-        WebService ws= new WebService("https://fotos-quito-liliana-zambrano.000webhostapp.com/validarcorreo.php",
+        WebService ws= new WebService("https://gallinas-force.000webhostapp.com/validcorreo.php",
                 datos, this, this);
-        ws.execute("POST");*/
+        ws.execute("POST");
     }
 
 
@@ -103,7 +103,7 @@ public class RegistraUsuario extends AppCompatActivity implements Asynchtask {
         if(ejec_service.equals("inserta_usuario")){
             result = result.replace("\r\n","");
             if(result.equals("datos_guardados")) {
-                //dialog.hide();
+                dialog.hide();
                 trae_datos();
                 Toast.makeText(this, "Registrado correctamente", Toast.LENGTH_LONG).show();
 
@@ -111,7 +111,7 @@ public class RegistraUsuario extends AppCompatActivity implements Asynchtask {
             else
                 Toast.makeText(this, "Error al registrar "+result, Toast.LENGTH_LONG).show();
         }else if(ejec_service.equals("consulta_correo")){
-            if(result.equals("1")){
+            if(result.length()>0){
                 existe=true;
                 registrar();
             }else {
