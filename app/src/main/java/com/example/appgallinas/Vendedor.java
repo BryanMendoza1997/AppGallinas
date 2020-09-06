@@ -14,7 +14,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
-import com.example.appgallinas.fragments.IngresarOferta;
+import com.example.appgallinas.fragments.ListarOfertas;
 import com.example.appgallinas.fragments.IngresarProducto;
 import com.google.android.material.navigation.NavigationView;
 
@@ -45,6 +45,10 @@ public class Vendedor extends AppCompatActivity {
                 {
                     case R.id.menu_agregarproducto:
                         fragment= new IngresarProducto();
+                        Transaccion=true;
+                        break;
+                    case R.id.modificar_producto:
+                        fragment = new ListarOfertas();
                         Transaccion=true;
                         break;
                 }

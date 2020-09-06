@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="110dp">
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="1dp"
+
+        android:background="#E2E2E2">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/lbl_raza_gallina"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:layout_alignParentStart="true"
+                android:layout_marginBottom="85dp"
+                android:layout_alignParentBottom="true"
+                android:text="Gallina Peruana"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/lbl_tipo"
+                android:layout_width="301dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+
+                android:layout_alignParentBottom="true"
+                android:layout_marginStart="5dp"
+                android:layout_marginBottom="57dp"
+                android:text="De pie o Pelada" />
+
+            <TextView
+                android:id="@+id/lbl_descripcion"
+                android:layout_width="250dp"
+                android:layout_height="26dp"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentBottom="true"
+                android:layout_marginStart="5dp"
+                android:layout_marginBottom="25dp"
+                android:text="Oferta promocion 2x1..."
+                android:textSize="10dp" />
+
+            <TextView
+                android:id="@+id/lbl_fecha"
+                android:layout_width="300dp"
+                android:layout_height="15dp"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentBottom="true"
+                android:layout_marginStart="5dp"
+                android:layout_marginBottom="8dp"
+                android:text="12/02/2020" />
+
+            <Button
+                android:id="@+id/btn_editar"
+                android:layout_width="88dp"
+                android:layout_height="35dp"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="12dp"
+                android:layout_marginEnd="9dp"
+                android:background="@color/colorPrimaryDark"
+                android:text="Editar"
+                android:textColor="@color/colorPrimary" />
+
+            <Button
+                android:id="@+id/btn_eliminar"
+                android:layout_width="wrap_content"
+                android:layout_height="35dp"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="56dp"
+                android:layout_marginEnd="9dp"
+                android:background="@color/colorPrimaryDark"
+                android:text="Eliminar"
+                android:textColor="@color/colorPrimary" />
+        </RelativeLayout>
+    </androidx.cardview.widget.CardView>
+</LinearLayout>
