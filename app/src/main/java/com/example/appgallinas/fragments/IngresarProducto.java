@@ -117,7 +117,7 @@ public class IngresarProducto extends Fragment implements Asynchtask  {
     }
 
     private void listar_gallinas() {
-        AdapterGallinas adapter=new AdapterGallinas(products,getContext(), new AdapterGallinas.OnItemClickListener() {
+        AdapterGallinas adapter=new AdapterGallinas(getContext(), products, new AdapterGallinas.OnItemClickListener() {
             @Override
             public void onItemClick(String name, int position) {
                 Fragment seguir= new IngresarOferta();

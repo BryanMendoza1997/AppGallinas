@@ -1,5 +1,6 @@
 package com.example.appgallinas.Adaptadores;
 
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,6 +11,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.example.appgallinas.Clases.Producto;
 import com.example.appgallinas.Clases.ProductoOferta;
 import com.example.appgallinas.R;
@@ -19,10 +21,12 @@ import java.util.ArrayList;
 public class AdapterGallinas extends RecyclerView.Adapter<AdapterGallinas.ViewHolder> {
     private ArrayList<ProductoOferta> names;
     private OnItemClickListener listener;
-    public AdapterGallinas(ArrayList<ProductoOferta> names, OnItemClickListener listener)
+    private Context context;
+    public AdapterGallinas(Context context, ArrayList<ProductoOferta> names, OnItemClickListener listener)
     {
         this.names=names;
         this.listener=listener;
+        this.context= context;
     }
 
     @NonNull
@@ -37,6 +41,9 @@ public class AdapterGallinas extends RecyclerView.Adapter<AdapterGallinas.ViewHo
         holder.titulo.setText(names.get(position).getRaza());
         holder.descripcion.setText(names.get(position).getDescripcion());
         //holder.fotoproducto.setImageResource(names.get(position).getUrl_foto());
+        Glide.with(context)
+                .load(names.get(position).getUrl_foto())
+                .into(holder.fotoproducto);
         holder.bind(names.get(position).getNombre(), listener);
     }
 

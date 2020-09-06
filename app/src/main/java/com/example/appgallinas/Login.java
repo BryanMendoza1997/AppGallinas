@@ -57,7 +57,9 @@ public class Login extends AppCompatActivity implements Asynchtask {
 
     @Override
     public void processFinish(String result) throws JSONException {
-        boolean bandera=false;
+
+        String d = result;
+        /*boolean bandera=false;
         List<String> lista= new ArrayList<>();
         JSONObject obj = new JSONObject(result);
         bandera=obj.getBoolean("success");
@@ -87,7 +89,7 @@ public class Login extends AppCompatActivity implements Asynchtask {
         }
         else {
           Toast.makeText(this,"Credenciales incorrectas",Toast.LENGTH_LONG).show();
-        }
+        }*/
 
 
     }
@@ -95,9 +97,17 @@ public class Login extends AppCompatActivity implements Asynchtask {
         Pattern pattern = Patterns.EMAIL_ADDRESS;
         return pattern.matcher(email).matches();
     }
+
     public  void registrarse(View view){
 
+        Map<String, String> datos = new HashMap<String, String>();
+        datos.put("body","juan");
+        WebService ws = new WebService("http://192.168.42.8:8000/test",
+                datos, Login.this, Login.this);
+        ws.execute("POST");
+
+        /*
         Intent in = new Intent(this, RegistraUsuario.class);
-        startActivity(in);
+        startActivity(in);*/
     }
 }
