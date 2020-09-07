@@ -118,9 +118,9 @@ public class ListarOfertas extends Fragment implements Asynchtask {
                 oferta.setCosto_xmenor(d.getString("PrecioMenor"));
                 oferta.setId_oferta(d.getString("idoferta"));
                 oferta.setUrl_foto(d.getString("foto_ref"));
-                oferta.setValoracion("1");
-                oferta.setFecha("12/02/2020");
-                oferta.setId_producto("1");
+                oferta.setValoracion(d.getString("valoracion"));
+                oferta.setFecha(d.getString("fecha"));
+                oferta.setId_producto(d.getString("Id_Producto"));
                 lista_ofertas.add(oferta);
             }
             listar_ofertas();

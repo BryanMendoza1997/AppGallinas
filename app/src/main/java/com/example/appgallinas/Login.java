@@ -100,12 +100,6 @@ public class Login extends AppCompatActivity implements Asynchtask {
 
     public  void registrarse(View view){
 
-        /*Map<String, String> datos = new HashMap<String, String>();
-        datos.put("body","juan");
-        WebService ws = new WebService("http://192.168.42.8:8000/test",
-                datos, Login.this, Login.this);
-        ws.execute("POST");*/
-
         Intent in = new Intent(this, RegistraUsuario.class);
         startActivity(in);
     }
