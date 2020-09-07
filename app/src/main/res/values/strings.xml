@@ -15,6 +15,7 @@
     <string name="text_rol">ROL</string>
 
     <string name="btn_registrar_usuario">REGISTRAR</string>
+    <string name="btn_editar_oferta">EDITAR</string>
 
 
     <string name="text_descripcion">Descripción</string>
