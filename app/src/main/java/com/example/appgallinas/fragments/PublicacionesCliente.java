@@ -205,7 +205,7 @@ public class PublicacionesCliente extends Fragment  implements Asynchtask {
             Toast.makeText(getContext(), "Error id usuario", Toast.LENGTH_SHORT).show();
         }
     }
-    private boolean band;
+   /* private boolean band;
     public boolean validar(int posicion) {
         SharedPreferences prefe = this.getActivity().getSharedPreferences("MyPREFERENCES", MODE_PRIVATE);
         String id = prefe.getString("Idusuario", "");
@@ -234,7 +234,7 @@ public class PublicacionesCliente extends Fragment  implements Asynchtask {
         }
 
         return band;
-    }
+    }*/
 
     private String getDateTime() {
         DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
