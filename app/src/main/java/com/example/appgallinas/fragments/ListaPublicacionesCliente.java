@@ -12,6 +12,12 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 import com.example.appgallinas.Adaptadores.AdaptadorPublicacionesguardadas;
 import com.example.appgallinas.Adaptadores.MyAdapter;
 import com.example.appgallinas.Clases.Listapublicaciones;
@@ -33,12 +39,10 @@ import static android.content.Context.MODE_PRIVATE;
 /**
  * A simple {@link Fragment} subclass.
  * Use the {@link ListaPublicacionesCliente#newInstance} factory method to
- * create an instance of this fragment.
  */
 public class ListaPublicacionesCliente extends Fragment  implements Asynchtask {
 
     // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
@@ -68,8 +72,8 @@ public class ListaPublicacionesCliente extends Fragment  implements Asynchtask {
         return fragment;
     }
     ArrayList<Listapublicaciones> publicaciones;
-    RecyclerView recyclerView;
-    AdaptadorPublicacionesguardadas adapter;
+    RecyclerView recyclerViewpublicaciones;
+    AdaptadorPublicacionesguardadas adapterpublicaciones;
     String idusuario;
     private ProgressDialog progreso;
     @Override
@@ -86,10 +90,10 @@ public class ListaPublicacionesCliente extends Fragment  implements Asynchtask {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View vista=inflater.inflate(R.layout.fragment_lista_publicaciones_cliente, container, false);
-        recyclerView=(RecyclerView) vista.findViewById(R.id.Recyclerviewlpc);
-        recyclerView.setHasFixedSize(true);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         usuario();
+        recyclerViewpublicaciones=(RecyclerView) vista.findViewById(R.id.Recyclerviewlpc);
+        recyclerViewpublicaciones.setHasFixedSize(true);
+        recyclerViewpublicaciones.setLayoutManager(new LinearLayoutManager(getContext()));
         publicaciones=new ArrayList<>();
         addDatos();
         return  vista;
@@ -127,12 +131,38 @@ public class ListaPublicacionesCliente extends Fragment  implements Asynchtask {
         progreso.hide();
     }
     private void listar_publicaciones() {
-        adapter=new AdaptadorPublicacionesguardadas(publicaciones,getContext());
-        recyclerView.setAdapter(adapter);
-        adapter.setOnItemClickListener(new AdaptadorPublicacionesguardadas.OnItemClickListener() {
+        adapterpublicaciones=new AdaptadorPublicacionesguardadas(publicaciones,this.getContext());
+        recyclerViewpublicaciones.setAdapter(adapterpublicaciones);
+        adapterpublicaciones.setOnItemClickListener(new AdaptadorPublicacionesguardadas.OnItemClickListener() {
             @Override
-            public void onDeleteClick(int position) {
-                Toast.makeText(getContext(),position,Toast.LENGTH_SHORT).show();
+            public void onEliminarClick(final int position) {
+                int oferta=publicaciones.get(position).getIdoferta();
+                if(idusuario.length()>0){
+                    RequestQueue request = Volley.newRequestQueue(getContext());
+                    StringRequest volley=new StringRequest(Request.Method.GET, "https://gallinas-force.000webhostapp.com/eliminarpedido.php?idoferta="+oferta+"&idusuario="+Integer.parseInt(idusuario)+"", new Response.Listener<String>() {
+                        @Override
+                        public void onResponse(String response) {
+                            if(response.length()>0){
+                                Toast.makeText(getContext(),"Publicación Guardada",Toast.LENGTH_SHORT).show();
+                                publicaciones.remove(position);
+                                adapterpublicaciones.notifyItemRemoved(position);
+                            }
+
+                        } }, new Response.ErrorListener() {
+                        @Override
+                        public void onErrorResponse(VolleyError error) {
+                            Toast.makeText(getContext(),"Publicación no guardada",Toast.LENGTH_SHORT).show();
+                        }
+                    });
+                    request.add(volley);
+                }else {
+                    Toast.makeText(getContext(),"Error id usuario",Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onContactarClick(int position) {
+                Toast.makeText(getContext(),String.valueOf(position),Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -142,6 +172,21 @@ public class ListaPublicacionesCliente extends Fragment  implements Asynchtask {
         this.idusuario = id;
         if (id.equals("")) {
             Toast.makeText(getContext(), "Error id usuario", Toast.LENGTH_SHORT).show();
+        }
+    }
+    @Override
+    public void setUserVisibleHint(boolean isVisibleToUser) {
+        super.setUserVisibleHint(isVisibleToUser);
+
+        // Refresh tab data:
+
+        if (getFragmentManager() != null) {
+
+            getFragmentManager()
+                    .beginTransaction()
+                    .detach(this)
+                    .attach(this)
+                    .commit();
         }
     }
 }

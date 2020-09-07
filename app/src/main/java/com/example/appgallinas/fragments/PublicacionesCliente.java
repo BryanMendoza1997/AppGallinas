@@ -109,7 +109,7 @@ public class PublicacionesCliente extends Fragment  implements Asynchtask {
         progreso.show();
     }
 
-    public void agregardatos(){
+   /* public void agregardatos(){
 
         RequestQueue request = Volley.newRequestQueue(this.getContext());
         progreso=new ProgressDialog(getContext());
@@ -145,7 +145,7 @@ public class PublicacionesCliente extends Fragment  implements Asynchtask {
         });
        request.add(volley);
         progreso.hide();
-    }
+    }*/
 
     @Override
     public void processFinish(String result) throws JSONException {

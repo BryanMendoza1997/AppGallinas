@@ -1,5 +1,4 @@
 package com.example.appgallinas.Adaptadores;
-
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -7,13 +6,10 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.bumptech.glide.Glide;
 import com.example.appgallinas.Clases.Listapublicaciones;
 import com.example.appgallinas.R;
-
 import java.util.ArrayList;
 
 public class AdaptadorPublicacionesguardadas extends RecyclerView.Adapter<AdaptadorPublicacionesguardadas.ViewHolder> {
@@ -21,8 +17,10 @@ public class AdaptadorPublicacionesguardadas extends RecyclerView.Adapter<Adapta
     private ArrayList<Listapublicaciones> names;
     private OnItemClickListener mListener;
     private Context contexto;
+
     public interface OnItemClickListener {
-        void onDeleteClick(int position);
+        void onEliminarClick(int position);
+        void onContactarClick(int position);
     }
     public void setOnItemClickListener(OnItemClickListener listener) {
         mListener = listener;
@@ -58,6 +56,7 @@ public class AdaptadorPublicacionesguardadas extends RecyclerView.Adapter<Adapta
 
     @Override
     public int getItemCount() {
+
         return names.size();
     }
 
@@ -93,13 +92,24 @@ public class AdaptadorPublicacionesguardadas extends RecyclerView.Adapter<Adapta
             telefono=(TextView) itemView.findViewById(R.id.txtcelularv);
             nombre=(TextView) itemView.findViewById(R.id.txtnombrev);
 
+            eliminar.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (listener != null) {
+                        int position = getAdapterPosition();
+                        if (position != RecyclerView.NO_POSITION) {
+                            listener.onEliminarClick(position);
+                        }
+                    }
+                }
+            });
             contactar.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     if (listener != null) {
                         int position = getAdapterPosition();
                         if (position != RecyclerView.NO_POSITION) {
-                            listener.onDeleteClick(position);
+                            listener.onContactarClick(position);
                         }
                     }
                 }

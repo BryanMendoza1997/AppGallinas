@@ -89,8 +89,6 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
                             listener.onDeleteClick(position);
                         }
                     }
-                    guardar.setEnabled(false);
-                    guardar.setText("Añadido");
                 }
             });
         }
