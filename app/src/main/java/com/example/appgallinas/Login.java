@@ -58,7 +58,7 @@ public class Login extends AppCompatActivity implements Asynchtask {
     @Override
     public void processFinish(String result) throws JSONException {
 
-        //String d = result;
+
         boolean bandera=false;
         List<String> lista= new ArrayList<>();
         JSONObject obj = new JSONObject(result);
@@ -99,12 +99,6 @@ public class Login extends AppCompatActivity implements Asynchtask {
     }
 
     public  void registrarse(View view){
-
-        /*Map<String, String> datos = new HashMap<String, String>();
-        datos.put("body","juan");
-        WebService ws = new WebService("http://192.168.42.8:8000/test",
-                datos, Login.this, Login.this);
-        ws.execute("POST");*/
 
         Intent in = new Intent(this, RegistraUsuario.class);
         startActivity(in);
