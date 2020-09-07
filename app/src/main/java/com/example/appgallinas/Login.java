@@ -58,7 +58,7 @@ public class Login extends AppCompatActivity implements Asynchtask {
     @Override
     public void processFinish(String result) throws JSONException {
 
-        //String d = result;
+
         boolean bandera=false;
         List<String> lista= new ArrayList<>();
         JSONObject obj = new JSONObject(result);
