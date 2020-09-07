@@ -8,8 +8,7 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
+import android.content.SharedPreferences;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -19,10 +18,8 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-import com.example.appgallinas.Adaptadores.AdapterGallinas;
 import com.example.appgallinas.Adaptadores.MyAdapter;
 import com.example.appgallinas.Clases.Producto;
-import com.example.appgallinas.Clases.ProductoOferta;
 import com.example.appgallinas.R;
 import com.example.appgallinas.WebServices.Asynchtask;
 import com.example.appgallinas.WebServices.WebService;
@@ -31,9 +28,14 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
+
+import static android.content.Context.MODE_PRIVATE;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -84,6 +86,7 @@ public class PublicacionesCliente extends Fragment  implements Asynchtask {
     ArrayList<Producto> products;
     RecyclerView recyclerView;
     MyAdapter adapter;
+    String idusuarios;
     private ProgressDialog progreso;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -162,14 +165,80 @@ public class PublicacionesCliente extends Fragment  implements Asynchtask {
         listar_publicaciones();
         progreso.hide();
     }
+
     private void listar_publicaciones() {
         adapter=new MyAdapter(products,getContext());
         recyclerView.setAdapter(adapter);
         adapter.setOnItemClickListener(new MyAdapter.OnItemClickListener() {
             @Override
             public void onDeleteClick(int position) {
-                Toast.makeText(getContext(),"Publicación Guardada",Toast.LENGTH_SHORT).show();
+                usuario();
+                int oferta=products.get(position).getIdoferta();
+                    if(idusuarios.length()>0){
+                        RequestQueue request = Volley.newRequestQueue(getContext());
+                        StringRequest volley=new StringRequest(Request.Method.GET, "https://gallinas-force.000webhostapp.com/insertpedido2.php?idusuario="+Integer.parseInt(idusuarios)+"&idoferta="+oferta+"&fecha="+getDateTime()+"&valoracion=5", new Response.Listener<String>() {
+                            @Override
+                            public void onResponse(String response) {
+                                if(response.length()>0){
+                                    Toast.makeText(getContext(),"Publicación Guardada",Toast.LENGTH_SHORT).show();
+                                }
+
+                            } }, new Response.ErrorListener() {
+                            @Override
+                            public void onErrorResponse(VolleyError error) {
+                                Toast.makeText(getContext(),"Publicación no guardada",Toast.LENGTH_SHORT).show();
+                            }
+                        });
+                        request.add(volley);
+                    }else {
+                        Toast.makeText(getContext(),"Error id usuario",Toast.LENGTH_SHORT).show();
+                    }
             }
         });
+
+    }
+    public void usuario(){
+        SharedPreferences prefe = this.getActivity().getSharedPreferences("MyPREFERENCES", MODE_PRIVATE);
+        String id = prefe.getString("Idusuario", "");
+        this.idusuarios = id;
+        if (id.equals("")) {
+            Toast.makeText(getContext(), "Error id usuario", Toast.LENGTH_SHORT).show();
+        }
+    }
+    private boolean band;
+    public boolean validar(int posicion) {
+        SharedPreferences prefe = this.getActivity().getSharedPreferences("MyPREFERENCES", MODE_PRIVATE);
+        String id = prefe.getString("Idusuario", "");
+        this.idusuarios = id;
+        if (id.equals("")) {
+            Toast.makeText(getContext(), "Error id usuario", Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(getContext(), id, Toast.LENGTH_SHORT).show();
+            int iduser = Integer.parseInt(id);
+            RequestQueue request = Volley.newRequestQueue(this.getContext());
+            StringRequest volley = new StringRequest(Request.Method.GET, "https://gallinas-force.000webhostapp.com/boleanpedido.php?idoferta=" + posicion + "&idusuario=" + iduser + "", new Response.Listener<String>() {
+                @Override
+                public void onResponse(String response) {
+                    if (response.length() > 0) {
+
+                    }else {
+
+                    }
+                }
+            }, new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError error) {
+                }
+            });
+            request.add(volley);
+        }
+
+        return band;
+    }
+
+    private String getDateTime() {
+        DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
+        Date date = new Date();
+        return dateFormat.format(date);
     }
 }
