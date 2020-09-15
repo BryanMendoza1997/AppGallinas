@@ -1,6 +1,9 @@
 package com.example.appgallinas.Clases;
 
 public class Listapublicaciones {
+
+
+    private int pedido;
     private String precio;
     private String descripción;
     private String estado;
@@ -13,8 +16,9 @@ public class Listapublicaciones {
     private  String direccion;
     private  String telefono;
     private  String nombre;
+    public float calificacion;
 
-    public Listapublicaciones(String precio, String descripción, String estado, String fotogallina, String titulo, String peso, int idoferta, String ciudad, String correo, String direccion, String telefono, String nombre) {
+    public Listapublicaciones(int pedido,String precio, String descripción, String estado, String fotogallina, String titulo, String peso, int idoferta, String ciudad, String correo, String direccion, String telefono, String nombre,float valoracion) {
         this.precio = precio;
         this.descripción = descripción;
         this.estado = estado;
@@ -27,6 +31,23 @@ public class Listapublicaciones {
         this.direccion = direccion;
         this.telefono = telefono;
         this.nombre = nombre;
+        this.pedido=pedido;
+        this.calificacion=valoracion;
+    }
+    public int getPedido() {
+        return pedido;
+    }
+
+    public void setPedido(int pedido) {
+        this.pedido = pedido;
+    }
+
+    public float getCalificacion() {
+        return calificacion;
+    }
+
+    public void setCalificacion(float calificacion) {
+        this.calificacion = calificacion;
     }
 
     public String getPrecio() {

@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="225dp"
+    android:background="#FFEB3B">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginStart="1dp"
+        android:layout_marginTop="1dp"
+        android:background="#E2E2E2">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/imagetop"
+                android:layout_width="112dp"
+                android:layout_height="163dp"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="18dp"
+                app:srcCompat="@drawable/primerpuesto" />
+
+            <TextView
+                android:id="@+id/textView15"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="23dp"
+                android:layout_toEndOf="@+id/imagetop"
+                android:fontFamily="@font/lora"
+                android:text="Nombre:"
+                android:textColor="#0C0C0C"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/txtvendedortop"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/textView15"
+                android:layout_marginStart="11dp"
+                android:layout_marginTop="9dp"
+                android:layout_toEndOf="@+id/imagetop"
+                android:fontFamily="@font/lora"
+                android:text="Juan Fernando Ramirez Mendoza"
+                android:textColor="#0C0C0C"
+                android:textSize="18sp" />
+
+            <RatingBar
+                android:id="@+id/ratingBarTop"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/txtcorreovendedortop"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="36dp"
+                android:clickable="false"
+                android:max="5"
+                android:numStars="5" />
+
+            <TextView
+                android:id="@+id/textView17"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/txtvendedortop"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="8dp"
+                android:layout_toEndOf="@+id/imagetop"
+                android:fontFamily="@font/lora"
+                android:text="Ciudad:"
+                android:textColor="#121111"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/txtciudadvendedortop"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/txtvendedortop"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="9dp"
+                android:layout_toEndOf="@+id/textView17"
+                android:text="Quevedo"
+                android:textColor="#090909"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/txtcorreovendedortop"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/txtciudadvendedortop"
+                android:layout_marginStart="12dp"
+                android:layout_marginTop="10dp"
+                android:layout_toEndOf="@+id/imagetop"
+                android:text="juanfernando@gmail.com" />
+        </RelativeLayout>
+    </androidx.cardview.widget.CardView>
+
+</RelativeLayout>

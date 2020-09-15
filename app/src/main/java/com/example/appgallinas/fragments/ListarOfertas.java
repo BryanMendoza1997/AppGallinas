@@ -142,8 +142,6 @@ public class ListarOfertas extends Fragment implements Asynchtask {
                                 @Override
                                 public void onClick(DialogInterface dialog, int which) {
                                     elimina(position);
-
-                                    //Toast.makeText(getContext(),"Eliminando...",Toast.LENGTH_LONG).show();
                                 }
                             })
                             .setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {

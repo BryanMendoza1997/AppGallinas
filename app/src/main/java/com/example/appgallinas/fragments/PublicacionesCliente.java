@@ -176,7 +176,7 @@ public class PublicacionesCliente extends Fragment  implements Asynchtask {
                 int oferta=products.get(position).getIdoferta();
                     if(idusuarios.length()>0){
                         RequestQueue request = Volley.newRequestQueue(getContext());
-                        StringRequest volley=new StringRequest(Request.Method.GET, "https://gallinas-force.000webhostapp.com/insertpedido2.php?idusuario="+Integer.parseInt(idusuarios)+"&idoferta="+oferta+"&fecha="+getDateTime()+"&valoracion=5", new Response.Listener<String>() {
+                        StringRequest volley=new StringRequest(Request.Method.GET, "https://gallinas-force.000webhostapp.com/insertpedido2.php?idusuario="+Integer.parseInt(idusuarios)+"&idoferta="+oferta+"&fecha="+getDateTime()+"&valoracion=0.0", new Response.Listener<String>() {
                             @Override
                             public void onResponse(String response) {
                                 if(response.length()>0){

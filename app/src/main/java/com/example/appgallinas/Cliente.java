@@ -34,7 +34,7 @@ public class Cliente extends AppCompatActivity {
         TabLayout tabLayout=(TabLayout)findViewById(R.id.tablayout);
         tabLayout.addTab(tabLayout.newTab().setText("Ofertas").setIcon(R.drawable.ic_publicaciones));
         tabLayout.addTab(tabLayout.newTab().setText("Pedidos").setIcon(R.drawable.ic_pedidos));
-        tabLayout.addTab(tabLayout.newTab().setText("Datos").setIcon(R.drawable.ic_datospersonales));
+        tabLayout.addTab(tabLayout.newTab().setText("Rating").setIcon(R.drawable.ic_datospersonales));
         tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
 
         final ViewPager viewPager=(ViewPager) findViewById(R.id.viewPager);

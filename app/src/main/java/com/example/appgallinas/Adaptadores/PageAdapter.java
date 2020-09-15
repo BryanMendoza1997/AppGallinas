@@ -8,6 +8,7 @@ import androidx.fragment.app.FragmentStatePagerAdapter;
 import com.example.appgallinas.fragments.DatosPersonales;
 import com.example.appgallinas.fragments.ListaPublicacionesCliente;
 import com.example.appgallinas.fragments.PublicacionesCliente;
+import com.example.appgallinas.fragments.Topvendedores;
 
 public class PageAdapter extends FragmentStatePagerAdapter {
     private int numbretabs;
@@ -28,7 +29,7 @@ public class PageAdapter extends FragmentStatePagerAdapter {
             case 1:
                 return  new ListaPublicacionesCliente();
             case 2:
-                return  new DatosPersonales();
+                return  new Topvendedores();
             default:
                 return null;
         }

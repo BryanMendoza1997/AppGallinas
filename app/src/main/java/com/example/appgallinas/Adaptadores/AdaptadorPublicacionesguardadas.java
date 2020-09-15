@@ -5,6 +5,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.RatingBar;
 import android.widget.TextView;
 import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
@@ -21,6 +22,7 @@ public class AdaptadorPublicacionesguardadas extends RecyclerView.Adapter<Adapta
     public interface OnItemClickListener {
         void onEliminarClick(int position);
         void onContactarClick(int position);
+        void onValoracionClick(int position, float calificacion);
     }
     public void setOnItemClickListener(OnItemClickListener listener) {
         mListener = listener;
@@ -52,6 +54,7 @@ public class AdaptadorPublicacionesguardadas extends RecyclerView.Adapter<Adapta
         holder.nombre.setText(names.get(position).getNombre());
         holder.direccion.setText(names.get(position).getDireccion());
         holder.telefono.setText(names.get(position).getTelefono());
+        holder.estrellas.setRating(names.get(position).getCalificacion());
     }
 
     @Override
@@ -74,6 +77,7 @@ public class AdaptadorPublicacionesguardadas extends RecyclerView.Adapter<Adapta
         TextView nombre;
         Button contactar;
         Button eliminar;
+        RatingBar estrellas;
 
         public ViewHolder(View itemView, final OnItemClickListener listener) {
             super(itemView);
@@ -86,7 +90,7 @@ public class AdaptadorPublicacionesguardadas extends RecyclerView.Adapter<Adapta
             contactar=(Button)itemView.findViewById(R.id.btncontactar);
             ciudad=(TextView) itemView.findViewById(R.id.txtciudad2);
             eliminar=(Button)itemView.findViewById(R.id.btneliminarv);
-
+            estrellas=(RatingBar)itemView.findViewById(R.id.ratingBarv);
             correo=(TextView) itemView.findViewById(R.id.txtcorreov);
             direccion=(TextView) itemView.findViewById(R.id.txtdireccionv);
             telefono=(TextView) itemView.findViewById(R.id.txtcelularv);
@@ -103,6 +107,18 @@ public class AdaptadorPublicacionesguardadas extends RecyclerView.Adapter<Adapta
                     }
                 }
             });
+            estrellas.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
+                @Override
+                public void onRatingChanged(RatingBar ratingBar, float rating, boolean fromUser) {
+                    if (listener != null) {
+                        int position = getAdapterPosition();
+                        if (position != RecyclerView.NO_POSITION) {
+                            listener.onValoracionClick(position,estrellas.getRating());
+                        }
+                    }
+                }
+            });
+
             contactar.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {

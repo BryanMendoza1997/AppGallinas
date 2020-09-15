@@ -1,7 +1,9 @@
 package com.example.appgallinas.fragments;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -114,6 +116,7 @@ public class ListaPublicacionesCliente extends Fragment  implements Asynchtask {
         for(int i=0;i<as.length();i++){
             JSONObject d = as.getJSONObject(i);
             publicaciones.add(new Listapublicaciones(
+                    Integer.parseInt(d.getString("Id_Pedido")),
                     "min: "+d.getString("PrecioMenor")+ "$  max: " + d.getString("PrecioMayor")+"$",
                     d.getString("descripcion"),
                     d.getString("Tipo"),
@@ -125,7 +128,8 @@ public class ListaPublicacionesCliente extends Fragment  implements Asynchtask {
                     d.getString("correo"),
                     d.getString("direccion"),
                     d.getString("celular"),
-                    d.getString("nombre")+ "  " + d.getString("apellido")));
+                    d.getString("nombre")+ "  " + d.getString("apellido"),
+                    Float.parseFloat(d.getString("valoracion"))));
         }
         listar_publicaciones();
         progreso.hide();
@@ -162,7 +166,28 @@ public class ListaPublicacionesCliente extends Fragment  implements Asynchtask {
 
             @Override
             public void onContactarClick(int position) {
-                Toast.makeText(getContext(),String.valueOf(position),Toast.LENGTH_SHORT).show();
+                String dial = "tel:" + publicaciones.get(position).getTelefono();
+                startActivity(new Intent(Intent.ACTION_DIAL, Uri.parse(dial)));
+
+            }
+
+            @Override
+            public void onValoracionClick(int position, float calificacion) {
+                RequestQueue request = Volley.newRequestQueue(getContext());
+                StringRequest volley=new StringRequest(Request.Method.GET, "https://gallinas-force.000webhostapp.com/ActualizarValoracion.php?Id_Pedido="+publicaciones.get(position).getPedido()+"&valoracion="+ calificacion +"", new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        if(response.length()>0){
+                           // Toast.makeText(getContext(),"Calificación Guardada",Toast.LENGTH_SHORT).show();
+                        }
+
+                    } }, new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Toast.makeText(getContext(),"Calificación no guardada",Toast.LENGTH_SHORT).show();
+                    }
+                });
+                request.add(volley);
             }
         });
     }
