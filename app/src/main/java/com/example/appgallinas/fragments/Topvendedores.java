@@ -115,13 +115,23 @@ public class Topvendedores extends Fragment  implements Asynchtask {
         JSONArray as = s.getJSONArray("Producto");
         for (int i = 0; i < as.length(); i++) {
             JSONObject d = as.getJSONObject(i);
-            vendedores.add(new MejorVendedor(R.drawable.primerpuesto,
+            vendedores.add(new MejorVendedor(R.drawable.restodepuestos,
                     d.getString("nombre") + "  " + d.getString("apellido"),
                     d.getString("ciudad"),
                     d.getString("correo"),
                     Float.parseFloat(d.getString("Valoracion"))));
         }
-        vendedores.get(1).setFoto(R.drawable.segundopuesto);
+        for(int i=0;i<vendedores.size();i++){
+            if(i==0){
+                vendedores.get(i).setFoto(R.drawable.primerpuesto);
+            }
+            if(i==1){
+                vendedores.get(i).setFoto(R.drawable.segundopuesto);
+            }
+            if(i==2){
+                vendedores.get(i).setFoto(R.drawable.tercerpuesto);
+            }
+        }
         listar_vendedores();
         progresoven.hide();
     }

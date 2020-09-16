@@ -57,6 +57,7 @@
                 android:id="@+id/ratingBarTop"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:theme="@style/RatingBar.Yellow"
                 android:layout_below="@+id/txtcorreovendedortop"
                 android:layout_alignParentEnd="true"
                 android:layout_marginTop="16dp"

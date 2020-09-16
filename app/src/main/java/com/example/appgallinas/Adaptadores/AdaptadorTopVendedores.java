@@ -58,6 +58,7 @@ public class AdaptadorTopVendedores  extends RecyclerView.Adapter<AdaptadorTopVe
             ciudad=(TextView) itemView.findViewById(R.id.txtciudadvendedortop);
             correo=(TextView) itemView.findViewById(R.id.txtcorreovendedortop);
             estrellas=(RatingBar) itemView.findViewById(R.id.ratingBarTop);
+            estrellas.setIsIndicator(true);
 
         }
 
