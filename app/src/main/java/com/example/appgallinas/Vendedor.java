@@ -28,10 +28,6 @@ public class Vendedor extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_vendedor);
-        //Id y Nombre del usuario que inicio sesion puedes ocupar estar variables para eso
-        //nombre=getIntent().getStringExtra("Nombre");
-        //String ids=getIntent().getStringExtra("id_user");
-        //id =Integer.valueOf(getIntent().getStringExtra("Idusuario"));
         drawerLayout=(DrawerLayout)findViewById(R.id.drawer_layout_vendedor);
         navigationView=(NavigationView)findViewById(R.id.nav_view_vendedor);
         setToolbar();

@@ -31,6 +31,7 @@ public class Login extends AppCompatActivity implements Asynchtask {
         setContentView(R.layout.activity_login);
         usuario=(EditText)findViewById(R.id.txtcorreo);
         contrasenia=(EditText)findViewById(R.id.txtcontrasenia);
+
     }
     public void iniciar(View view){
 

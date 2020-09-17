@@ -13,11 +13,11 @@
         android:supportsRtl="true"
         android:allowClearUserData="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity"></activity>
+        <activity android:name=".Login"></activity>
         <activity android:name=".Vendedor" />
         <activity android:name=".Cliente" />
         <activity android:name=".RegistraUsuario"/>
-        <activity android:name=".Login">
+        <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
