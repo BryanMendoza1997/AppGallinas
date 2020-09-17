@@ -96,17 +96,18 @@ public class PublicacionesCliente extends Fragment  implements Asynchtask {
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         products=new ArrayList<>();
+        usuario();
         addDatos();
         return vista;
     }
     public  void  addDatos(){
 
-        progreso=new ProgressDialog(getContext());
-        progreso.setMessage("Cargando...");
+        //progreso=new ProgressDialog(getContext());
+        //progreso.setMessage("Cargando...");
         Map<String, String> datos = new HashMap<String, String>();
-        WebService ws= new WebService("https://gallinas-force.000webhostapp.com/ofertasuscripcion.php", datos, this.getContext(), this);
-        ws.execute("POST");
-        progreso.show();
+        WebService ws= new WebService("https://gallinas-force.000webhostapp.com/ofertasuscripcion.php?idusuario="+Integer.parseInt(idusuarios)+"", datos, this.getContext(), this);
+        ws.execute("GET");
+        //progreso.show();
     }
 
    /* public void agregardatos(){
@@ -163,7 +164,7 @@ public class PublicacionesCliente extends Fragment  implements Asynchtask {
                     d.getString("ciudad")+", Ecuador"));
         }
         listar_publicaciones();
-        progreso.hide();
+        //progreso.hide();
     }
 
     private void listar_publicaciones() {
@@ -171,15 +172,16 @@ public class PublicacionesCliente extends Fragment  implements Asynchtask {
         recyclerView.setAdapter(adapter);
         adapter.setOnItemClickListener(new MyAdapter.OnItemClickListener() {
             @Override
-            public void onDeleteClick(int position) {
-                usuario();
-                int oferta=products.get(position).getIdoferta();
+            public void onDeleteClick(final int position) {
+                   int oferta=products.get(position).getIdoferta();
                     if(idusuarios.length()>0){
                         RequestQueue request = Volley.newRequestQueue(getContext());
                         StringRequest volley=new StringRequest(Request.Method.GET, "https://gallinas-force.000webhostapp.com/insertpedido2.php?idusuario="+Integer.parseInt(idusuarios)+"&idoferta="+oferta+"&fecha="+getDateTime()+"&valoracion=0.0", new Response.Listener<String>() {
                             @Override
                             public void onResponse(String response) {
                                 if(response.length()>0){
+                                    products.remove(position);
+                                    adapter.notifyItemRemoved(position);
                                     Toast.makeText(getContext(),"Publicación Guardada",Toast.LENGTH_SHORT).show();
                                 }
 
@@ -240,5 +242,20 @@ public class PublicacionesCliente extends Fragment  implements Asynchtask {
         DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
         Date date = new Date();
         return dateFormat.format(date);
+    }
+    @Override
+    public void setUserVisibleHint(boolean isVisibleToUser) {
+        super.setUserVisibleHint(isVisibleToUser);
+
+        // Refresh tab data:
+
+        if (getFragmentManager() != null) {
+
+            getFragmentManager()
+                    .beginTransaction()
+                    .detach(this)
+                    .attach(this)
+                    .commit();
+        }
     }
 }

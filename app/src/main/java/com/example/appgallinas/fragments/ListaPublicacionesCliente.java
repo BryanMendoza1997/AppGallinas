@@ -101,12 +101,12 @@ public class ListaPublicacionesCliente extends Fragment  implements Asynchtask {
         return  vista;
     }
     public  void  addDatos(){
-        progreso=new ProgressDialog(getContext());
-        progreso.setMessage("Cargando...");
+        //progreso=new ProgressDialog(getContext());
+        //progreso.setMessage("Cargando...");
         Map<String, String> datos = new HashMap<String, String>();
         WebService ws= new WebService("https://gallinas-force.000webhostapp.com/hola.php?idusuario="+idusuario+"", datos, this.getContext(), this);
         ws.execute("POST");
-        progreso.show();
+       // progreso.show();
     }
 
     @Override
@@ -132,7 +132,7 @@ public class ListaPublicacionesCliente extends Fragment  implements Asynchtask {
                     Float.parseFloat(d.getString("valoracion"))));
         }
         listar_publicaciones();
-        progreso.hide();
+      //  progreso.hide();
     }
     private void listar_publicaciones() {
         adapterpublicaciones=new AdaptadorPublicacionesguardadas(publicaciones,this.getContext());

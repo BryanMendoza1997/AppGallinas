@@ -98,16 +98,19 @@ public class Cliente extends AppCompatActivity {
         getMenuInflater().inflate(R.menu.menu,menu);
 
         MenuItem menuItem=menu.findItem(R.id.action_buscar);
-        SearchView searchView=(SearchView) menuItem.getActionView();
+        final SearchView searchView=(SearchView) menuItem.getActionView();
         searchView.setQueryHint("Buscar .....");
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
-                return false;
+                searchView.setQuery("", false);
+                searchView.setIconified(true);
+                return true;
             }
 
             @Override
             public boolean onQueryTextChange(String newText) {
+
                 return false;
             }
         });

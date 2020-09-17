@@ -101,12 +101,12 @@ public class Topvendedores extends Fragment  implements Asynchtask {
 
     public void addDatos() {
 
-        progresoven = new ProgressDialog(getContext());
-        progresoven.setMessage("Cargando...");
+      //  progresoven = new ProgressDialog(getContext());
+     //   progresoven.setMessage("Cargando...");
         Map<String, String> datos = new HashMap<String, String>();
         WebService ws = new WebService("https://gallinas-force.000webhostapp.com/mayorvaloracion.php", datos, this.getContext(), this);
         ws.execute("GET");
-        progresoven.show();
+      //  progresoven.show();
     }
 
     @Override
@@ -133,11 +133,26 @@ public class Topvendedores extends Fragment  implements Asynchtask {
             }
         }
         listar_vendedores();
-        progresoven.hide();
+       // progresoven.hide();
     }
 
     private void listar_vendedores() {
         adaptervendedores = new AdaptadorTopVendedores(vendedores, this.getContext());
         recyclerViewvendedores.setAdapter(adaptervendedores);
+    }
+    @Override
+    public void setUserVisibleHint(boolean isVisibleToUser) {
+        super.setUserVisibleHint(isVisibleToUser);
+
+        // Refresh tab data:
+
+        if (getFragmentManager() != null) {
+
+            getFragmentManager()
+                    .beginTransaction()
+                    .detach(this)
+                    .attach(this)
+                    .commit();
+        }
     }
 }
