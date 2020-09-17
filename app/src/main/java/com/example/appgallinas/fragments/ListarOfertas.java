@@ -96,7 +96,7 @@ public class ListarOfertas extends Fragment implements Asynchtask {
     private void traer_ofertas() {
         accion="traer_ofertas";
         Map<String, String> datos = new HashMap<String, String>();
-        WebService ws= new WebService("https://gallinas-force.000webhostapp.com/ofertasuscripcion.php", datos, this.getContext(), this);
+        WebService ws= new WebService("https://gallinas-force.000webhostapp.com/ofertasuscripcion2.php", datos, this.getContext(), this);
         ws.execute("POST");
     }
 
