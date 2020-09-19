@@ -1,13 +1,21 @@
 package com.example.appgallinas;
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.app.DownloadManager;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.util.Patterns;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
 import com.example.appgallinas.Clases.Usuario;
 import com.example.appgallinas.WebServices.Asynchtask;
 import com.example.appgallinas.WebServices.WebService;
@@ -30,10 +38,12 @@ public class Login extends AppCompatActivity implements Asynchtask {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         usuario=(EditText)findViewById(R.id.txtcorreo);
+
         contrasenia=(EditText)findViewById(R.id.txtcontrasenia);
 
     }
     public void iniciar(View view){
+
 
         //startActivity(new Intent(this, Vendedor.class));
         if(usuario.getText().toString().trim().length()>0 && contrasenia.getText().toString().trim().length()>0) {
@@ -54,6 +64,7 @@ public class Login extends AppCompatActivity implements Asynchtask {
             Toast.makeText(this, "Por favor llene todos los campos...", Toast.LENGTH_SHORT).show();
         }
 
+
     }
 
     @Override
@@ -70,6 +81,7 @@ public class Login extends AppCompatActivity implements Asynchtask {
              lista.add(String.valueOf(obj.getInt("idusuario")));
              lista.add(obj.getString("nombre"));
              lista.add(obj.getString("ROL"));
+             lista.add(obj.getString("celular"));
 
            if (lista.get(2).trim().equals("Cliente")) {
 
@@ -85,12 +97,15 @@ public class Login extends AppCompatActivity implements Asynchtask {
             user=new Usuario();
             user.setId_usuario(Integer.parseInt(lista.get(0)));
             user.setNombre(lista.get(1));
+            user.setRol(lista.get(2));
+            user.setCelular(lista.get(3));
            startActivity(in);
           }
         }
         else {
           Toast.makeText(this,"Credenciales incorrectas",Toast.LENGTH_LONG).show();
         }
+
 
 
     }

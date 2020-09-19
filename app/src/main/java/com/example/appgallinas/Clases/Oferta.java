@@ -2,13 +2,21 @@ package com.example.appgallinas.Clases;
 
 public class Oferta {
     private String raza, tipo, fecha, costo_xmenor, costo_xmayor, peso_minimo, peso_maximo, descripcion;
-    private String id_oferta, id_producto, url_foto, valoracion;
+    private String id_oferta, id_producto, url_foto, valoracion, suscripcion;
 
     public Oferta() {
     }
 
     public String getId_oferta() {
         return id_oferta;
+    }
+
+    public String getSuscripcion() {
+        return suscripcion;
+    }
+
+    public void setSuscripcion(String suscripcion) {
+        this.suscripcion = suscripcion;
     }
 
     public void setId_oferta(String id_oferta) {

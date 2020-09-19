@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    tools:context=".fragments.ActualizarVendedor">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -25,7 +24,7 @@
                 android:layout_height="wrap_content"
                 android:hint="@string/text_nombre">
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/txt_nombre"
+                    android:id="@+id/txt_nombre_edit"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="text"
@@ -40,7 +39,7 @@
                 android:layout_height="wrap_content"
                 android:hint="@string/text_apellido">
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/txt_apellido"
+                    android:id="@+id/txt_apellido_edit"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="text"
@@ -53,22 +52,9 @@
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/text_rol">
-
-                <com.weiwangcn.betterspinner.library.material.MaterialBetterSpinner
-                    android:id="@+id/android_material_design_spinner"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:drawablePadding="6dp">
-                </com.weiwangcn.betterspinner.library.material.MaterialBetterSpinner>
-            </com.google.android.material.textfield.TextInputLayout>
-            <com.google.android.material.textfield.TextInputLayout
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
                 android:hint="@string/text_correo">
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/txt_correo"
+                    android:id="@+id/txt_correo_edit"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="textEmailAddress"
@@ -77,13 +63,30 @@
                     android:drawablePadding="5dp">
                 </com.google.android.material.textfield.TextInputEditText>
             </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/text_rol">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/txt_rol_edit"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textEmailAddress"
+                    android:drawableStart="@drawable/ico_email"
+                    android:drawableTint="@color/color_icos"
+                    android:drawablePadding="5dp">
+                </com.google.android.material.textfield.TextInputEditText>
+            </com.google.android.material.textfield.TextInputLayout>
+
             <com.google.android.material.textfield.TextInputLayout
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/text_celular">
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/txt_celular"
+                    android:id="@+id/txt_celular_edit"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="phone"
@@ -98,7 +101,7 @@
                 android:layout_height="wrap_content"
                 android:hint="@string/text_ciudad">
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/txt_ciudad"
+                    android:id="@+id/txt_ciudad_edit"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="text"
@@ -113,7 +116,7 @@
                 android:layout_height="wrap_content"
                 android:hint="@string/text_direccion">
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/txt_direccion"
+                    android:id="@+id/txt_direccion_edit"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="text"
@@ -128,7 +131,7 @@
                 android:layout_height="wrap_content"
                 android:hint="@string/text_clave">
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/txt_clave"
+                    android:id="@+id/txt_clave_edit"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="textPassword"
@@ -143,7 +146,7 @@
                 android:layout_height="wrap_content"
                 android:hint="@string/text_confirmar_clave">
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/txt_clave_confirma"
+                    android:id="@+id/txt_clave_confirma_edit"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="textPassword"
@@ -154,18 +157,18 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.button.MaterialButton
-                android:id="@+id/btnRegistrarse"
+                android:id="@+id/btnEditarUsuario"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="15dp"
-                android:onClick="valida_correeo"
-                android:text="@string/btn_registrar_usuario_p"
+
+                android:text="@string/btn_editar_usuario"
                 android:textAlignment="center"
                 android:textAppearance="@style/TextAppearance.AppCompat.Display1"
                 android:textColor="@color/colorPrimary"
                 android:textSize="26dp"
-                app:cornerRadius="350in"></com.google.android.material.button.MaterialButton>
+                ></com.google.android.material.button.MaterialButton>
         </LinearLayout>
     </ScrollView>
 
-</LinearLayout>
+</FrameLayout>

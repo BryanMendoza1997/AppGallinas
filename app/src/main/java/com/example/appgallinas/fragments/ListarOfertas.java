@@ -31,6 +31,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
+import static com.example.appgallinas.Login.user;
+
 
 public class ListarOfertas extends Fragment implements Asynchtask {
     // TODO: Rename parameter arguments, choose names that match
@@ -96,8 +98,8 @@ public class ListarOfertas extends Fragment implements Asynchtask {
     private void traer_ofertas() {
         accion="traer_ofertas";
         Map<String, String> datos = new HashMap<String, String>();
-        WebService ws= new WebService("https://gallinas-force.000webhostapp.com/ofertasuscripcion2.php", datos, this.getContext(), this);
-        ws.execute("POST");
+        WebService ws= new WebService("https://gallinas-force.000webhostapp.com/ofertasuscripcion2.php?idusuario="+user.getId_usuario()+"", datos, this.getContext(), this);
+        ws.execute("GET");
     }
 
     @Override
@@ -109,6 +111,7 @@ public class ListarOfertas extends Fragment implements Asynchtask {
             for(int i=0;i<as.length();i++){
                 JSONObject d = as.getJSONObject(i);
                 oferta = new Oferta();
+                oferta.setSuscripcion(d.getString("transactionId"));
                 oferta.setRaza(d.getString("raza"));
                 oferta.setTipo(d.getString("tipo"));
                 oferta.setDescripcion(d.getString("descripcion"));
@@ -125,6 +128,8 @@ public class ListarOfertas extends Fragment implements Asynchtask {
             }
             listar_ofertas();
         }else{
+            Fragment fragment = new ListarOfertas();
+            getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.content_frame,fragment).commit();
             Toast.makeText(getContext(),result,Toast.LENGTH_LONG).show();
         }
 
@@ -142,6 +147,8 @@ public class ListarOfertas extends Fragment implements Asynchtask {
                                 @Override
                                 public void onClick(DialogInterface dialog, int which) {
                                     elimina(position);
+
+                                    //Toast.makeText(getContext(),"Eliminando...",Toast.LENGTH_LONG).show();
                                 }
                             })
                             .setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
@@ -166,6 +173,7 @@ public class ListarOfertas extends Fragment implements Asynchtask {
                     args.putString("url_foto",lista_ofertas.get(position).getUrl_foto());
                     args.putString("valoracion",lista_ofertas.get(position).getValoracion());
                     args.putString("fecha",lista_ofertas.get(position).getFecha());
+                    args.putString("id_suscripcion",lista_ofertas.get(position).getSuscripcion());
                     fragment.setArguments(args);
                     FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
                     FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();

@@ -31,6 +31,7 @@
         android:layout_marginTop="33dp"
         android:drawableLeft="@drawable/ic_contrasenia"
         android:ems="10"
+
         android:fontFamily="@font/lora"
         android:inputType="textPassword"
         android:maxLength="30"
@@ -105,6 +106,7 @@
         android:layout_marginTop="34dp"
         android:drawableLeft="@drawable/ico_email"
         android:ems="10"
+        android:text="mario@gmail.com"
         android:fontFamily="@font/lora"
         android:inputType="textEmailAddress"
         android:maxLength="75"

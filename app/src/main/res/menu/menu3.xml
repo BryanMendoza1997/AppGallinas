@@ -4,6 +4,10 @@
         android:title="INICIO">
     <menu>
         <item
+            android:id="@+id/menu_social"
+            android:icon="@drawable/ic_premiun"
+            android:title="Publicaciones Premiun"/>
+        <item
             android:id="@+id/menu_notificacion"
             android:icon="@drawable/ic_notificaciones"
             android:title="Notificaciones"/>
@@ -20,7 +24,11 @@
             <item
                 android:id="@+id/modificar_producto"
                 android:icon="@drawable/ic_modificar"
-                android:title="Modificar"/>
+                android:title="Mis ofertas"/>
+            <!--<item
+                android:id="@+id/menu_eliminar_producto"
+                android:icon="@drawable/ic_eliminar"
+                android:title="Eliminar"/>-->
         </menu>
     </item>
     <item
@@ -28,14 +36,9 @@
         android:title="Cuenta">
         <menu>
             <item
-                android:id="@+id/menu_destacados"
+                android:id="@+id/menu_actualizar_datos"
                 android:icon="@drawable/ic_actualizardatos"
                 android:title="Actualizar datos"/>
-            <item
-                android:id="@+id/menu_vendedores_destacados"
-                android:icon="@drawable/ic_top"
-                android:title="Ranking"/>
-
         </menu>
     </item>
 </menu>

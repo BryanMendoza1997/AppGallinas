@@ -36,9 +36,16 @@ public class AdapterOferta extends RecyclerView.Adapter<AdapterOferta.ViewHolder
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+        String val_sus="";
+        if(!ofertas.get(position).getSuscripcion().equals("null")){
+            val_sus = " (Con Suscripción)";
+        }else{
+            val_sus = "";
+        }
+
         holder.lbl_raza.setText(ofertas.get(position).getRaza());
         holder.lbl_tipo.setText(ofertas.get(position).getTipo());
-        holder.lbl_fecha.setText(ofertas.get(position).getFecha());
+        holder.lbl_fecha.setText(ofertas.get(position).getFecha()+val_sus);
         holder.lbl_descripcion.setText(ofertas.get(position).getDescripcion());
         holder.bind(ofertas.get(position).getRaza(), listener);
     }

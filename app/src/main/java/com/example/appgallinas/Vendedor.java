@@ -14,6 +14,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
+import com.example.appgallinas.fragments.ActualizarVendedor;
 import com.example.appgallinas.fragments.ListarOfertas;
 import com.example.appgallinas.fragments.IngresarProducto;
 import com.example.appgallinas.fragments.Notificaciones;
@@ -37,11 +38,6 @@ public class Vendedor extends AppCompatActivity {
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
-                navigationView.getMenu().findItem(R.id.menu_agregarproducto).setChecked(false);
-                navigationView.getMenu().findItem(R.id.modificar_producto).setChecked(false);
-                navigationView.getMenu().findItem(R.id.menu_vendedores_destacados).setChecked(false);
-                navigationView.getMenu().findItem(R.id.menu_destacados).setChecked(false);
-                navigationView.getMenu().findItem(R.id.menu_notificacion).setChecked(false);
                 boolean Transaccion=false;
                 Fragment fragment=null;
                 switch (menuItem.getItemId())
@@ -54,12 +50,13 @@ public class Vendedor extends AppCompatActivity {
                         fragment = new ListarOfertas();
                         Transaccion=true;
                         break;
-                    case R.id.menu_vendedores_destacados:
-                        fragment = new Topvendedores();
-                        Transaccion=true;
-                        break;
+
                     case R.id.menu_notificacion:
                         fragment = new Notificaciones();
+                        Transaccion=true;
+                        break;
+                    case R.id.menu_actualizar_datos:
+                        fragment = new ActualizarVendedor();
                         Transaccion=true;
                         break;
                 }

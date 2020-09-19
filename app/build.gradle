@@ -40,4 +40,5 @@ dependencies {
     implementation 'com.weiwangcn.betterspinner:library-material:1.1.0'
     implementation 'com.rengwuxian.materialedittext:library:2.1.4'
     implementation 'com.weiwangcn.betterspinner:library-material:1.1.0'
+    implementation 'com.amitshekhar.android:android-networking:1.0.2'
 }

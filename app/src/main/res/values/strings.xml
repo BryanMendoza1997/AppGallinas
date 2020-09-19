@@ -14,8 +14,13 @@
     <string name="text_confirmar_clave">Confirmar Contraseña</string>
     <string name="text_rol">ROL</string>
 
-    <string name="btn_registrar_usuario">REGISTRAR</string>
+    <string name="btn_registrar_usuario_p">REGISTRAR</string>
+    <string name="btn_registrar_usuario">PUBLICAR GRATIS</string>
+    <string name="btn_registrar_usuario_con_suscripcion">PROCESAR PAGO</string>
+    <string name="btn_publicar_con_suscripcion">PUBLICAR</string>
     <string name="btn_editar_oferta">EDITAR</string>
+    <string name="text_suscripcion">Suscribete para estar en el top de vendedores, el costo de suscripción es de $5.00</string>
+    <string name="btn_editar_usuario">ACTUALIZAR</string>
 
 
     <string name="text_descripcion">Descripción</string>
@@ -23,5 +28,7 @@
     <string name="text_peso_maximo">Peso máximo</string>
     <string name="text_costo_xmenor">Costo X menor</string>
     <string name="text_costo_xmayor">Costo X mayor</string>
-    <string name="text_estado">Viva o Muerta</string>
+    <string name="text_estado">Seleccione</string>
+    <string name="text_estado_pago_exitoso">¡Pago existoso!</string>
+    <string name="text_estado_pago_fallido">¡Pago fallido!</string>
 </resources>

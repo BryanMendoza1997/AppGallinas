@@ -20,6 +20,7 @@
             android:orientation="vertical">
 
             <ImageView
+                android:id="@+id/img_gallina"
                 android:layout_width="156dp"
                 android:layout_height="159dp"
                 android:layout_gravity="center"
@@ -37,8 +38,8 @@
                     android:id="@+id/txt_descripcion"
                     android:layout_width="match_parent"
                     android:layout_height="120dp"
-                    android:inputType="text"
-                    android:drawableStart="@drawable/ico_nombre"
+                    android:inputType="text|textMultiLine"
+                    android:drawableStart="@drawable/ic_descripcion"
                     android:drawableTint="@color/color_icos"
 
                     android:drawablePadding="5dp">
@@ -50,8 +51,8 @@
                 android:layout_width="150dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="right"
-                android:layout_marginTop="20dp"
-                android:drawableStart="@drawable/ico_nombre"
+                android:layout_marginTop="30dp"
+                android:drawableStart="@drawable/png_peso"
                 android:drawableTint="@color/color_icos"
                 android:hint="@string/text_peso_minimo"
                 android:inputType="number">
@@ -63,8 +64,8 @@
                 android:layout_width="150dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="left"
-                android:drawableStart="@drawable/ico_nombre"
-                android:layout_marginTop="-43dp"
+                android:drawableStart="@drawable/png_peso"
+                android:layout_marginTop="-53dp"
                 android:drawableTint="@color/color_icos"
                 android:hint="@string/text_peso_maximo"
                 android:inputType="number">
@@ -92,7 +93,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="right"
                 android:layout_marginTop="20dp"
-                android:drawableStart="@drawable/ico_nombre"
+                android:drawableStart="@drawable/ic_dinero"
                 android:drawableTint="@color/color_icos"
                 android:hint="@string/text_costo_xmenor"
                 android:inputType="number">
@@ -104,13 +105,33 @@
                 android:layout_width="150dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="left"
-                android:drawableStart="@drawable/ico_nombre"
+                android:drawableStart="@drawable/ic_dinero"
                 android:layout_marginTop="-43dp"
                 android:drawableTint="@color/color_icos"
                 android:hint="@string/text_costo_xmayor"
                 android:inputType="number">
 
             </com.google.android.material.textfield.TextInputEditText>
+
+            <TextView
+                android:id="@+id/txt_suscripcion"
+                android:layout_marginTop="30dp"
+                android:layout_marginBottom="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/text_suscripcion"/>
+
+            <CheckBox
+                android:id="@+id/chk_suscribirse"
+                android:layout_width="match_parent"
+                android:text="Suscribirse"
+                android:layout_height="wrap_content"/>
+            <TextView
+                android:id="@+id/txt_estado_pago"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="" />
+
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btn_registrar_oferta"
                 android:layout_width="match_parent"
@@ -123,6 +144,8 @@
                 android:textSize="26dp">
 
             </com.google.android.material.button.MaterialButton>
+
+
         </LinearLayout>
     </ScrollView>
 
