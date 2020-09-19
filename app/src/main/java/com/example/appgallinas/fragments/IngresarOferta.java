@@ -270,7 +270,7 @@ public class IngresarOferta extends Fragment implements View.OnClickListener, As
                     public void onResponse(JSONObject response) {
 
                         try { //Approved -- !response.getString("transactionStatus").isEmpty() --response.getString("transactionStatus").equals("Approved")
-                            if(!response.getString("transactionStatus").isEmpty()){
+                            if(response.getString("transactionStatus").equals("Approved")){
                                 //MOSTRAR VISTO DE APROBACION
                                 btn_registrar_oferta.setText(R.string.btn_publicar_con_suscripcion);
                                 txt_estado_pago.setText(R.string.text_estado_pago_exitoso);
