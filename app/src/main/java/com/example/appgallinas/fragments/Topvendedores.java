@@ -85,7 +85,6 @@ public class Topvendedores extends Fragment  implements Asynchtask {
     ArrayList<MejorVendedor> vendedores;
     RecyclerView recyclerViewvendedores;
     AdaptadorTopVendedores adaptervendedores;
-    private ProgressDialog progresoven;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -111,6 +110,7 @@ public class Topvendedores extends Fragment  implements Asynchtask {
 
     @Override
     public void processFinish(String result) throws JSONException {
+        vendedores.clear();
         JSONObject s = new JSONObject(result);
         JSONArray as = s.getJSONArray("Producto");
         for (int i = 0; i < as.length(); i++) {

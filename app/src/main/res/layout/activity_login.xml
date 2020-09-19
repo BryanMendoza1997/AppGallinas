@@ -15,7 +15,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginStart="0dp"
         android:layout_marginTop="1dp"
-        android:background="#945124"
+        android:background="@color/colorPrimaryDark"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:srcCompat="@drawable/logofinal"
@@ -53,6 +53,8 @@
         android:fontFamily="@font/lora"
         android:onClick="iniciar"
         android:text="Iniciar Sesión"
+        android:textAlignment="center"
+        android:textColor="@color/colorPrimary"
         android:textStyle="bold" />
 
     <TextView
@@ -67,7 +69,7 @@
         android:fontFamily="@font/lora"
         android:onClick="registrarse"
         android:text="Registrarse"
-        android:textColor="@color/Anaranjado"
+        android:textColor="@color/colorAccent"
         android:textSize="18sp" />
 
     <TextView
@@ -91,7 +93,7 @@
         android:layout_toEndOf="@+id/textView6"
         android:fontFamily="@font/lora"
         android:text="aquí"
-        android:textColor="@color/rojo" />
+        android:textColor="@color/colorPrimaryDark" />
 
     <EditText
         android:id="@+id/txtcorreo"

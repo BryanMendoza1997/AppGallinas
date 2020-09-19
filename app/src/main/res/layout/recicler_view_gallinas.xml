@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="270dp"
+    android:layout_height="wrap_content"
     android:background="#E2E2E2">
 
     <androidx.cardview.widget.CardView
@@ -25,7 +25,6 @@
                 android:layout_alignParentTop="true"
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="16dp"
-                android:layout_toEndOf="@+id/imagenperfil"
                 android:text="Gallina Ponedora Colorada"
                 android:textColor="#100F0F"
                 android:textSize="18sp"
@@ -59,12 +58,11 @@
                 android:layout_height="40dp"
                 android:layout_below="@+id/txtdescripcion1"
                 android:layout_alignParentEnd="true"
-                android:layout_alignParentBottom="true"
                 android:layout_marginTop="15dp"
                 android:layout_marginEnd="16dp"
-                android:layout_marginBottom="26dp"
-                android:background="@android:color/holo_blue_light"
+                android:background="@color/colorAccent"
                 android:text="Crear oferta"
+                android:layout_marginBottom="10dp"
                 android:textColor="#ECE8E8" />
 
             <TextView

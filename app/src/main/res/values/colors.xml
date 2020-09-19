@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#f4ce31</color>
-    <color name="colorPrimaryDark">#40a8c4</color>
-    <color name="colorAccent">#945124</color>
+    <color name="colorPrimary">#ffffff</color>
+    <color name="colorPrimaryDark">#B0000F</color>
+    <color name="colorAccent">#2FBDEB</color>
     <color name="Cafe">#A18262</color>
     <color name="color_icos">#a2d5f2</color>
     <color name="Amarillo">#FFEB3B</color>
-    <color name="rojo">#FC1201</color>
-    <color name="Anaranjado">#f37127</color>
+    <color name="rojo">#18171c</color>
+    <color name="Anaranjado">#A254FF</color>
 </resources>

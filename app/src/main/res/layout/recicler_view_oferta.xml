@@ -64,7 +64,7 @@
                 android:layout_alignParentEnd="true"
                 android:layout_marginTop="12dp"
                 android:layout_marginEnd="9dp"
-                android:background="@color/colorPrimaryDark"
+                android:background="@color/colorAccent"
                 android:text="Editar"
                 android:textColor="@color/colorPrimary" />
 

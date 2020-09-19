@@ -15,6 +15,7 @@
 
 
         <RelativeLayout
+            android:id="@+id/Relativecontenedor"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
@@ -137,8 +138,8 @@
                 android:layout_alignParentBottom="true"
                 android:layout_marginEnd="9dp"
                 android:layout_marginBottom="11dp"
-                android:background="@android:color/holo_blue_light"
-                android:text="Añadir"
+                android:background="@drawable/drawablewithripple"
+                android:text="ME INTERESA"
                 android:textColor="#ECE8E8" />
 
             <TextView

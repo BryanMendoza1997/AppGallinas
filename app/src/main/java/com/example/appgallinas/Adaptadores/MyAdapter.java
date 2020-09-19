@@ -6,8 +6,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewParent;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -44,6 +46,9 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
 
     @Override
     public void onBindViewHolder(MyAdapter.ViewHolder holder, int position) {
+
+        holder.layout.setAnimation(AnimationUtils.loadAnimation(contexto,R.anim.fadescaleanimation));
+        holder.fotoproducto.setAnimation(AnimationUtils.loadAnimation(contexto,R.anim.fadetransaccionanimation));
         holder.titulo.setText(names.get(position).getTitulo());
         holder.descripcion.setText(names.get(position).getDescripción());
         Glide.with(contexto)
@@ -68,6 +73,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
         TextView estado;
         TextView ciudad;
         Button guardar;
+        RelativeLayout layout;
 
         public ViewHolder(View itemView, final OnItemClickListener listener) {
             super(itemView);
@@ -79,6 +85,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
             estado=(TextView) itemView.findViewById(R.id.txtestado);
             guardar=(Button)itemView.findViewById(R.id.btnañadircli);
             ciudad=(TextView) itemView.findViewById(R.id.txtciudad);
+            layout=(RelativeLayout)itemView.findViewById(R.id.Relativecontenedor);
 
             guardar.setOnClickListener(new View.OnClickListener() {
                 @Override

@@ -3,6 +3,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RatingBar;
@@ -41,6 +42,8 @@ public class AdaptadorPublicacionesguardadas extends RecyclerView.Adapter<Adapta
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
+        holder.fotoproducto.setAnimation(AnimationUtils.loadAnimation(contexto,R.anim.fadescaleanimation));
+        holder.estrellas.setAnimation(AnimationUtils.loadAnimation(contexto,R.anim.fadescaleanimation));
         holder.titulo.setText(names.get(position).getTitulo());
         holder.descripcion.setText(names.get(position).getDescripción());
         Glide.with(contexto)

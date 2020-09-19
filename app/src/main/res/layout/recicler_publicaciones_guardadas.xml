@@ -284,6 +284,7 @@
                 android:id="@+id/ratingBarv"
                 android:layout_width="wrap_content"
                 android:layout_height="43dp"
+                android:theme="@style/RatingBar.Yellow"
                 android:layout_below="@+id/textView14"
                 android:layout_alignParentStart="true"
                 android:layout_marginStart="60dp"

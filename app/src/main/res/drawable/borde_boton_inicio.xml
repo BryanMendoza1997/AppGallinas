@@ -1,5 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <shape xmlns:android="http://schemas.android.com/apk/res/android">
-    <solid android:color="#f4ce31"/>
+    <solid android:color="#18171c"/>
     <corners android:radius="20dp"/>
+    <item android:state_pressed="true">
+        <shape>
+            <solid android:color="@color/Anaranjado"></solid>
+        </shape>
+    </item>
+    <item>
+        <shape>
+            <solid android:color="@color/rojo"></solid>
+        </shape>
+    </item>
 </shape>

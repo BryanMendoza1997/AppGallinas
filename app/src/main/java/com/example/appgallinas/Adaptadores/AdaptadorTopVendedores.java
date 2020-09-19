@@ -4,8 +4,10 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.RatingBar;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -33,6 +35,8 @@ public class AdaptadorTopVendedores  extends RecyclerView.Adapter<AdaptadorTopVe
 
     @Override
     public void onBindViewHolder(@NonNull AdaptadorTopVendedores.ViewHolder holder, int position) {
+        holder.layoutt.setAnimation(AnimationUtils.loadAnimation(contexto,R.anim.fadescaleanimation));
+        holder.image.setAnimation(AnimationUtils.loadAnimation(contexto,R.anim.fadetransaccionanimation));
         holder.nombre.setText(lista.get(position).getNombre());
         holder.ciudad.setText(lista.get(position).getCiudad());
         holder.correo.setText(lista.get(position).getCorreo());
@@ -50,6 +54,7 @@ public class AdaptadorTopVendedores  extends RecyclerView.Adapter<AdaptadorTopVe
         TextView correo;
         ImageView image;
         RatingBar estrellas;
+        RelativeLayout layoutt;
 
         public ViewHolder(View itemView) {
             super(itemView);
@@ -59,6 +64,7 @@ public class AdaptadorTopVendedores  extends RecyclerView.Adapter<AdaptadorTopVe
             correo=(TextView) itemView.findViewById(R.id.txtcorreovendedortop);
             estrellas=(RatingBar) itemView.findViewById(R.id.ratingBarTop);
             estrellas.setIsIndicator(true);
+            layoutt=(RelativeLayout)itemView.findViewById(R.id.Relativelayoutv);
 
         }
 
