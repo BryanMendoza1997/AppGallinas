@@ -16,6 +16,7 @@ import android.widget.Toast;
 
 import com.example.appgallinas.fragments.ListarOfertas;
 import com.example.appgallinas.fragments.IngresarProducto;
+import com.example.appgallinas.fragments.Notificaciones;
 import com.example.appgallinas.fragments.Topvendedores;
 import com.google.android.material.navigation.NavigationView;
 
@@ -55,6 +56,10 @@ public class Vendedor extends AppCompatActivity {
                         break;
                     case R.id.menu_vendedores_destacados:
                         fragment = new Topvendedores();
+                        Transaccion=true;
+                        break;
+                    case R.id.menu_notificacion:
+                        fragment = new Notificaciones();
                         Transaccion=true;
                         break;
                 }
