@@ -6,6 +6,7 @@
         android:layout_width="match_parent"
         android:layout_height="228dp"
         android:scaleType="centerInside"
-        android:src="@drawable/logo" />
+        android:background="@color/colorPrimaryDark"
+        android:src="@drawable/logofinal" />
 
 </FrameLayout>

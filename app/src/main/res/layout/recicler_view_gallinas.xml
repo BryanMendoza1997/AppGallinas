@@ -44,7 +44,7 @@
             <TextView
                 android:id="@+id/txtdescripcion1"
                 android:layout_width="211dp"
-                android:layout_height="109dp"
+                android:layout_height="wrap_content"
                 android:layout_below="@+id/txttitulo1"
                 android:layout_marginStart="10dp"
                 android:layout_marginTop="44dp"
@@ -60,7 +60,7 @@
                 android:layout_alignParentEnd="true"
                 android:layout_marginTop="15dp"
                 android:layout_marginEnd="16dp"
-                android:background="@color/colorAccent"
+                android:background="@drawable/drawablewithripple"
                 android:text="Crear oferta"
                 android:layout_marginBottom="10dp"
                 android:textColor="#ECE8E8" />
