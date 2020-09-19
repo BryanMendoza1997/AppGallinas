@@ -87,7 +87,6 @@ public class PublicacionesCliente extends Fragment  implements Asynchtask {
     RecyclerView recyclerView;
     MyAdapter adapter;
     String idusuarios;
-    private ProgressDialog progreso;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -200,8 +199,8 @@ public class PublicacionesCliente extends Fragment  implements Asynchtask {
 
     }
     public void usuario(){
-        SharedPreferences prefe = this.getActivity().getSharedPreferences("MyPREFERENCES", MODE_PRIVATE);
-        String id = prefe.getString("Idusuario", "");
+        SharedPreferences preference = this.getActivity().getSharedPreferences("MyPREFERENCES", MODE_PRIVATE);
+        String id = preference.getString("Idusuario", "");
         this.idusuarios = id;
         if (id.equals("")) {
             Toast.makeText(getContext(), "Error id usuario", Toast.LENGTH_SHORT).show();

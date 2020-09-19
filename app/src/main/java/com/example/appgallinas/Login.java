@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.DownloadManager;
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.util.Patterns;
@@ -82,6 +83,10 @@ public class Login extends AppCompatActivity implements Asynchtask {
              lista.add(obj.getString("nombre"));
              lista.add(obj.getString("ROL"));
              lista.add(obj.getString("celular"));
+             SharedPreferences prefs = getSharedPreferences("MyPREFERENCES",Login.this.MODE_PRIVATE);
+             SharedPreferences.Editor editor = prefs.edit();
+             editor.putString("Idusuario", lista.get(0));
+             editor.commit();
 
            if (lista.get(2).trim().equals("Cliente")) {
 
