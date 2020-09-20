@@ -149,6 +149,7 @@ public class PublicacionesCliente extends Fragment  implements Asynchtask {
 
     @Override
     public void processFinish(String result) throws JSONException {
+        products.clear();
         JSONObject s = new JSONObject(result);
         JSONArray as= s.getJSONArray("Producto");
         for(int i=0;i<as.length();i++){
