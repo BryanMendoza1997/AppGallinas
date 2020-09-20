@@ -113,6 +113,7 @@ public class ActualizarVendedor extends Fragment implements Asynchtask, View.OnC
             txtConfirma_clave.setText(dd.getString("clave"));
             txt_rol.setText(dd.getString("ROL"));
             txt_rol.setEnabled(false);
+            txt_correo.setEnabled(false);
         }
         if(caso.equals("actualizar_datos")){
             Toast.makeText(getContext(), result, Toast.LENGTH_LONG).show();

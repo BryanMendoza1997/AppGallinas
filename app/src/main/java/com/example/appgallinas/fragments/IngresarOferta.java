@@ -194,9 +194,9 @@ public class IngresarOferta extends Fragment implements View.OnClickListener, As
             datos.put("clientUserId", String.valueOf(user.getId_usuario()));
             datos.put("reference", "Pago");
             datos.put("responseUrl", "none");
-            datos.put("amount", monto+"00");
+            datos.put("amount", "001");
             datos.put("amountWithTax", "0");
-            datos.put("amountWithoutTax", monto+"00");
+            datos.put("amountWithoutTax", "001");
             datos.put("tax", "0");
             datos.put("clientTransactionId", tiempo);
             //Toast.makeText(getContext(), tiempo,Toast.LENGTH_LONG).show();
