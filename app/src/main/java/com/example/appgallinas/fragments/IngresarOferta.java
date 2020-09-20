@@ -436,7 +436,7 @@ public class IngresarOferta extends Fragment implements View.OnClickListener, As
             Toast.makeText(this.getContext(), "Publicado", Toast.LENGTH_LONG).show();
         }
 
-        Fragment fragment = new ListarOfertas();
+        Fragment fragment = new IngresarProducto();
         getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.content_frame,fragment).commit();
 
     }
